@@ -4,8 +4,8 @@ body {
   font-size: 14px;
   margin: 0;
   padding: 16px;
-  background: #f4f5f7;
-  color: #222;
+  background: #0f172a;
+  color: #e5e7eb; /* dark-mode text works well on deep blue backgrounds [web:26] */
 }
 
 h1 {
@@ -14,17 +14,68 @@ h1 {
 }
 
 p.meta {
-  margin: 0 0 12px;
-  color: #555;
+  margin: 0 0 16px;
+  color: #9ca3af;
 }
 
-/* Table wrapper for horizontal scroll on small screens */
+/* Section headings (WBS, revenue, etc.) */
+h2 {
+  font-size: 16px;
+  margin: 18px 0 6px;
+}
+
+/* WBS bar */
+.wbs-bar {
+  display: flex;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid #1f2937;
+  background: #020617;
+  margin-bottom: 8px;
+}
+
+.wbs-segment {
+  padding: 4px 0;
+  text-align: center;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* Match the 55 / 20 / 25 split from your summary */
+.wbs-web {
+  width: 55%;
+  background: #0ea5e9;
+  color: #0b1120;
+}
+
+.wbs-research {
+  width: 20%;
+  background: #22c55e;
+  color: #022c22;
+}
+
+.wbs-bd {
+  width: 25%;
+  background: #f97316;
+  color: #18181b;
+}
+
+.wbs-legend {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Table wrapper for horizontal scroll on smaller screens [web:34][web:37] */
 .table-wrapper {
   overflow-x: auto;
-  background: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
-  padding: 8px;
+  background: #020617;
+  border-radius: 10px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.55);
+  padding: 12px;
+  border: 1px solid #1f2937;
 }
 
 /* Table */
@@ -32,40 +83,51 @@ table {
   border-collapse: collapse;
   width: 100%;
   min-width: 900px;
+  font-size: 13px;
 }
 
 th,
 td {
-  border: 1px solid #d0d4dc;
+  border: 1px solid #1f2937;
   padding: 6px 8px;
   vertical-align: top;
+  line-height: 1.35;
 }
 
+/* Sticky header for long scrolling tables [web:25][web:32] */
 th {
-  background: #eef2ff;
+  background: #020617;
+  color: #e5e7eb;
   font-weight: 600;
-  font-size: 13px;
   position: sticky;
   top: 0;
   z-index: 2;
+  text-align: left;
 }
 
-/* Zebra rows */
+/* Rows (kept same color to avoid noisy striping in dark mode) */
 tbody tr:nth-child(even) td {
-  background: #f9fafb;
+  background: #020617;
+}
+
+tbody tr:nth-child(odd) td {
+  background: #020617;
 }
 
 /* Section headers inside table */
 .section-header {
-  background: #e0f2fe;
+  background: linear-gradient(to right, #0ea5e9, #6366f1);
+  color: #f9fafb;
   font-weight: 600;
   font-size: 13px;
   text-align: left;
+  border-color: transparent;
 }
 
-/* Make long text easier to scan */
-td {
-  line-height: 1.35;
+/* Slight emphasis on BD / Outcomes columns */
+td:nth-child(4),
+td:nth-child(5) {
+  color: #e5e7eb;
 }
 
 /* Responsive tweaks */
