@@ -32,6 +32,18 @@
     <button data-view="weekly">Weekly (stacked)</button>
     <button data-view="weekly-pie">Weekly WBS Pie</button>
   </div>
+
+  <!-- inner toggle lives with the weekly WBS Pie section -->
+  <div id="pie-mode-toggle" class="inner-toggle">
+    <button type="button" data-mode="weekly-aggregate" class="active">
+      Weekly aggregate
+    </button>
+    <button type="button" data-mode="daily-aggregate">
+      Daily aggregate
+    </button>
+  </div>
+
+  <!-- single canvas for the monthly/weekly/weekly-pie Chart.js instance -->
   <canvas id="workBreakdownChart"></canvas>
 
   <div class="table-wrapper">
@@ -627,11 +639,12 @@
       </tbody>
     </table>
   </div>
-
+  
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js"></script>
 <script>
-  // Primary stacked monthly chart (top)
+  // ---------- PRIMARY STACKED MONTHLY CHART ----------
   const ctxMain = document.getElementById('workHoursChart');
+
   new Chart(ctxMain, {
     type: 'bar',
     data: {
@@ -683,7 +696,7 @@
     }
   });
 
-  // ----- WEEKLY DATA ARRAYS -----
+  // ---------- WEEKLY DATA ARRAYS ----------
   const weeklyLabels = [
     'Jun 2–8','Jun 9–15','Jun 16–22','Jun 23–30',
     'Jul 1–7','Jul 8–14','Jul 15–21','Jul 22–28',
@@ -730,9 +743,32 @@
     bd: sum(weeklyBD)
   };
 
+  // ---------- PIE MODES (DAILY/WEEKLY AGGREGATES) ----------
+  // For now both modes use the same totals; later you can change the daily data.
+  const pieModes = {
+    'weekly-aggregate': {
+      label: 'Weekly WBS Pie · Aggregate Split (Jun–Nov 10, 2025)',
+      data: [
+        weeklyTotalsForPie.web,
+        weeklyTotalsForPie.research,
+        weeklyTotalsForPie.bd
+      ]
+    },
+    'daily-aggregate': {
+      label: 'Daily WBS Pie · Aggregate Split (Jun–Nov 10, 2025)',
+      data: [
+        weeklyTotalsForPie.web,
+        weeklyTotalsForPie.research,
+        weeklyTotalsForPie.bd
+      ]
+    }
+  };
+
+  let currentPieMode = 'weekly-aggregate';
+
   const breakdownCtx = document.getElementById('workBreakdownChart');
 
-  // ----- VIEW CONFIGS -----
+  // ---------- VIEW CONFIGS ----------
   const views = {
     monthly: {
       type: 'bar',
@@ -845,58 +881,85 @@
           'Business Dev / Outreach'
         ],
         datasets: [{
-          data: [
-            weeklyTotalsForPie.web,
-            weeklyTotalsForPie.research,
-            weeklyTotalsForPie.bd
-          ],
+          data: pieModes[currentPieMode].data,
           backgroundColor: ['#0ea5e9', '#22c55e', '#f97316'],
           borderColor: '#020617',
           borderWidth: 1.5
         }]
       },
-  options: {
-  responsive: true,
-  plugins: {
-    title: {
-      display: true,
-      text: 'Aggregate WBS Split (Jun–Nov 10, 2025)',
-      color: '#e5e7eb'
-    },
-    legend: {
-      position: 'bottom',
-      labels: { color: '#e5e7eb' }
-    }
-  }
-}
-
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: pieModes[currentPieMode].label,
+            color: '#e5e7eb'
+          },
+          legend: {
+            position: 'bottom',
+            labels: { color: '#e5e7eb' }
+          }
+        }
+      }
     }
   };
 
-  // ----- TOGGLE LOGIC -----
-let currentView = 'monthly';
-let breakdownChart = new Chart(breakdownCtx, views[currentView]);
+  // ---------- MAIN VIEW TOGGLE (MONTHLY / WEEKLY / WEEKLY PIE) ----------
+  let currentView = 'monthly';
+  let breakdownChart = new Chart(breakdownCtx, views[currentView]);
 
-const toggleContainer = document.getElementById('chart-toggle');
+  const toggleContainer = document.getElementById('chart-toggle');
+  const pieModeToggle = document.getElementById('pie-mode-toggle');
 
-toggleContainer.addEventListener('click', (event) => {
-  const view = event.target.dataset.view;
-  if (!view || view === currentView) return;
+  // Initialize inner toggle visibility
+  if (pieModeToggle) {
+    pieModeToggle.style.display = 'none';
+  }
 
-  // Update active button styling
-  Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.view === view);
+  toggleContainer.addEventListener('click', (event) => {
+    const view = event.target.dataset.view;
+    if (!view || view === currentView) return;
+
+    // Update active button styling
+    Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === view);
+    });
+
+    currentView = view;
+
+    // Map data-view values to keys in the views object
+    const viewKey = (view === 'weekly-pie') ? 'weeklyPie' : view;
+
+    breakdownChart.destroy();
+    breakdownChart = new Chart(breakdownCtx, views[viewKey]);
+
+    // Show inner pie toggle only when pie is visible
+    if (pieModeToggle) {
+      pieModeToggle.style.display = (viewKey === 'weeklyPie') ? 'flex' : 'none';
+    }
   });
 
-  currentView = view;
+  // ---------- INNER PIE-MODE TOGGLE (WEEKLY / DAILY AGGREGATE) ----------
+  if (pieModeToggle) {
+    pieModeToggle.addEventListener('click', (event) => {
+      const mode = event.target.dataset.mode;
+      if (!mode || mode === currentPieMode) return;
 
-  // Map data-view values to keys in the views object
-  const viewKey = (view === 'weekly-pie') ? 'weeklyPie' : view;
+      currentPieMode = mode;
 
-  breakdownChart.destroy();
-  breakdownChart = new Chart(breakdownCtx, views[viewKey]);
-});
+      // Update inner button active state
+      Array.from(pieModeToggle.querySelectorAll('button')).forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === mode);
+      });
 
+      // Only update if current view is the pie
+      if (currentView === 'weekly-pie') {
+        breakdownChart.data.datasets[0].data = pieModes[currentPieMode].data;
+        breakdownChart.options.plugins.title.text = pieModes[currentPieMode].label;
+        breakdownChart.update(); // standard Chart.js update pattern[web:48]
+      }
+    });
+  }
 </script>
 
 </body>
