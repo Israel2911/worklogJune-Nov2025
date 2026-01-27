@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 16px;
   background: #0f172a;
-  color: #e5e7eb; /* dark-mode text works well on deep blue backgrounds [web:26] */
+  color: #e5e7eb;
 }
 
 h1 {
@@ -43,7 +43,7 @@ h2 {
   white-space: nowrap;
 }
 
-/* Match the 55 / 20 / 25 split from your summary */
+/* Match the 55 / 20 / 25 split from summary */
 .wbs-web {
   width: 55%;
   background: #0ea5e9;
@@ -68,7 +68,20 @@ h2 {
   color: #9ca3af;
 }
 
-/* Table wrapper for horizontal scroll on smaller screens [web:34][web:37] */
+/* Chart canvas */
+#workHoursChart {
+  max-width: 820px;
+  width: 100%;
+  margin: 12px 0 18px;
+}
+
+canvas {
+  background: #020617;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+}
+
+/* Table wrapper for horizontal scroll on smaller screens */
 .table-wrapper {
   overflow-x: auto;
   background: #020617;
@@ -94,7 +107,7 @@ td {
   line-height: 1.35;
 }
 
-/* Sticky header for long scrolling tables [web:25][web:32] */
+/* Sticky header for long scrolling tables */
 th {
   background: #020617;
   color: #e5e7eb;
@@ -105,7 +118,7 @@ th {
   text-align: left;
 }
 
-/* Rows (kept same color to avoid noisy striping in dark mode) */
+/* Uniform dark rows (no striping) */
 tbody tr:nth-child(even) td {
   background: #020617;
 }
