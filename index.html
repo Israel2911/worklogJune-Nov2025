@@ -35,247 +35,335 @@
 
   <canvas id="workBreakdownChart"></canvas>
 
+  <h2>Daily Work Log (Click month headers to expand/collapse)</h2>
   <div class="table-wrapper">
-    <table>
+    <table id="work-log-table">
       <thead>
         <tr>
           <th>Date</th>
-          <th>Web / Blockchain / Portal / CRM</th>
-          <th>Research</th>
-          <th>Business Development / Meetings / Outreach</th>
-          <th>Outcomes</th>
+          <th>Web / Blockchain / Portal / CRM (hrs)</th>
+          <th>Research (hrs)</th>
+          <th>Business Dev / Meetings / Outreach (hrs)</th>
+          <th>Outcomes / Notes</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody id="work-log-body">
-        <tr><td colspan="5" class="section-header">June 2025 – Web &amp; Blockchain Intensive, India</td></tr>
-        <tr data-date="2025-06-02">
+        <!-- JUNE 2025 -->
+        <tr class="section-header" data-month="2025-06">
+          <td colspan="6">June 2025 – Web &amp; Blockchain Intensive, India</td>
+        </tr>
+        <tr class="task-row" data-date="2025-06-02" data-month="2025-06">
           <td>2025-06-02</td>
-          <td>Designed blockchain insurer portal UI mockups; built initial state machine for policy issuance</td>
-          <td>Reviewed insurance product workflows; analyzed education sector trends in India</td>
-          <td>Brief lunch meeting with TWU contact re: India innovation center concept</td>
-          <td>Blockchain UI framework established; partnership direction noted</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="6" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="1" /></td>
+          <td data-outcome="true"><textarea>Designed blockchain insurer portal UI mockups; built initial state machine for policy issuance.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-03">
+        <tr class="task-row" data-date="2025-06-03" data-month="2025-06">
           <td>2025-06-03</td>
-          <td>Built admission portal interface components; refined carousel card system</td>
-          <td>Studied global education market trends and Canadian institution positioning</td>
-          <td>Informal student feedback gathering at Chennai café</td>
-          <td>Admission portal core UI complete; student interest baseline established</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="6" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="1" /></td>
+          <td data-outcome="true"><textarea>Built admission portal interface components; refined carousel card system; student interest baseline established.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-04">
+        <tr class="task-row" data-date="2025-06-04" data-month="2025-06">
           <td>2025-06-04</td>
-          <td>Designed interactive carousel cards for admission state-change notifications; created email widget variants</td>
-          <td>Analyzed educational technology UX patterns and student communication preferences</td>
-          <td>Quick networking lunch with contacts; discussed innovation center space needs</td>
-          <td>Carousel components functional; multiple state variants designed</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="1" /></td>
+          <td data-outcome="true"><textarea>Designed interactive carousel cards for admission state-change notifications; created email widget variants.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-05">
+        <tr class="task-row" data-date="2025-06-05" data-month="2025-06">
           <td>2025-06-05</td>
-          <td>Prototyped interactive carousel animations in Figma; built responsive design system</td>
-          <td>Researched admission notification best practices and email rendering optimization</td>
-          <td>Met with local school representative in Chennai to gather feedback on TWU program positioning</td>
-          <td>Responsive design system locked; mobile-first components tested</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-outcome="true"><textarea>Prototyped interactive carousel animations; built responsive design system; mobile-first components tested.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-06">
+        <tr class="task-row" data-date="2025-06-06" data-month="2025-06">
           <td>2025-06-06</td>
-          <td>Implemented state-based admission card system with conditional rendering</td>
-          <td>Reviewed API integration patterns for real-time admission status updates</td>
-          <td>Brief campus space scouting in Chennai city center</td>
-          <td>Admission state machine fully functional; API integration points mapped</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="1" /></td>
+          <td data-outcome="true"><textarea>Implemented state-based admission card system with conditional rendering; mapped API integration points.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-07">
+        <tr class="task-row" data-date="2025-06-07" data-month="2025-06">
           <td>2025-06-07</td>
-          <td>Updated CRM database structure for Indian institutional tracking; built bulk import tools</td>
-          <td>Analyzed Indian private college partnership structures and enrollment trends</td>
-          <td>Extended meeting with intermediary regarding Cochin University and European academic partners</td>
-          <td>CRM scalable for 50+ institutions; import automation complete; Cochin/Europe pathway scoped</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-outcome="true"><textarea>Updated CRM database structure for institutional tracking; built bulk import tools; scoped Cochin/Europe pathway.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-09">
+        <tr class="task-row" data-date="2025-06-09" data-month="2025-06">
           <td>2025-06-09</td>
-          <td>Refined blockchain insurer UI for policy issuance flow; optimized claim submission interface</td>
-          <td>Studied state-change triggers and insurance claim workflows; researched education accessibility topics</td>
-          <td>Lunch at Muttukadu with intermediary to discuss long-term partnership strategy</td>
-          <td>Blockchain UI production-ready; claim workflow optimized; multi‑year partnership potential clarified</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="6" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-outcome="true"><textarea>Refined blockchain insurer UI for policy issuance; optimized claim submission interface; clarified multi‑year partnership potential.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-10">
+        <tr class="task-row" data-date="2025-06-10" data-month="2025-06">
           <td>2025-06-10</td>
-          <td>Built claim submission interface with validation; designed policy status dashboard</td>
-          <td>Researched emerging trends in Indian higher education and student mobility patterns</td>
-          <td>Follow-up meetings with students and parents in Chennai</td>
-          <td>Claim interface complete; dashboard framework ready for data integration; positive feedback on TWU programs</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="6" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-outcome="true"><textarea>Built claim submission interface with validation; designed policy status dashboard; positive feedback from students/parents.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-11">
+        <tr class="task-row" data-date="2025-06-11" data-month="2025-06">
           <td>2025-06-11</td>
-          <td>Designed comprehensive dashboard for policy status tracking and analytics</td>
-          <td>Analyzed user feedback from portal testing; researched education marketing strategies in India</td>
-          <td>Informal café meeting regarding student advising and TWU visibility</td>
-          <td>Dashboard UI components complete; early student referral network forming</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="6" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-outcome="true"><textarea>Designed comprehensive dashboard for policy tracking and analytics; early student referral network forming.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-12">
+        <tr class="task-row" data-date="2025-06-12" data-month="2025-06">
           <td>2025-06-12</td>
-          <td>Integrated carousel cards with admission email system; built email template variations</td>
-          <td>Tested widget rendering across email clients; researched post‑pandemic education trends</td>
-          <td>Evening networking with family contacts; discussed research center and economic collaboration themes</td>
-          <td>Email integration complete; multiple templates tested; strategic alignment on research center concept</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-outcome="true"><textarea>Integrated carousel cards with admission email system; multiple templates tested; alignment on research center concept.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-06-16">
-          <td>2025-06-16</td>
-          <td>Tested responsive mobile admission widget across devices; optimized performance</td>
-          <td>Reviewed admission portal traffic analytics and education sector benchmarks</td>
-          <td>Brief check-in with TWU stakeholder on India engagement strategy</td>
-          <td>Mobile widget fully responsive; sub‑2 second load times achieved</td>
-        </tr>
-        <tr data-date="2025-06-17">
-          <td>2025-06-17</td>
-          <td>Updated CRM with new Indian college institutional data; automated lead segmentation</td>
-          <td>Researched Tamil Nadu private college landscape and partnership opportunities</td>
-          <td>Informal campus visits and student conversations at Chennai education hubs</td>
-          <td>CRM expanded to 30+ institutions; automated tagging live; network of interested students noted</td>
-        </tr>
-        <tr data-date="2025-06-18">
-          <td>2025-06-18</td>
-          <td>Refined blockchain insurer claim processing UI; added advanced filtering</td>
-          <td>Studied insurance compliance workflows and higher education regulatory requirements</td>
-          <td>Meeting with intermediary to plan July–August college visits and MoU conversations</td>
-          <td>Claim UI production-ready; visit tour framework confirmed</td>
-        </tr>
-        <tr data-date="2025-06-19">
-          <td>2025-06-19</td>
-          <td>Designed policy status notification cards with multiple trigger conditions</td>
-          <td>Analyzed successful state‑change scenarios; reviewed education partnership case studies</td>
-          <td>Visited Chennai café hubs; continued student and parent feedback collection</td>
-          <td>Notification system supports 12 trigger conditions; ongoing demand for Canada programs documented</td>
-        </tr>
-        <tr data-date="2025-06-23">
-          <td>2025-06-23</td>
-          <td>Updated admission portal edge case handling; refined user flow for exceptional scenarios</td>
-          <td>Tested carousel card rendering across conditions; researched ed‑tech adoption in India</td>
-          <td>Lunch with institutional contact and family network; discussed TWU innovation center facility needs</td>
-          <td>Edge case handling improved; 99.5% scenario coverage; innovation center requirements clarified</td>
-        </tr>
-        <tr data-date="2025-06-24">
-          <td>2025-06-24</td>
-          <td>Implemented advanced filtering for admission statuses by college, program, and date</td>
-          <td>Reviewed state machine logic and operational best practices in education portals</td>
-          <td>Meeting with local school heads in Chennai regarding TWU promotion and partnership models</td>
-          <td>Advanced filtering complete; preliminary MoU conversations initiated with key schools</td>
-        </tr>
-        <tr data-date="2025-06-25">
-          <td>2025-06-25</td>
-          <td>Built analytics dashboard for admission portal performance tracking</td>
-          <td>Analyzed admission conversion rate patterns and related education market research</td>
-          <td>Extended meeting with Cochin University intermediary to refine introduction list</td>
-          <td>Analytics dashboard live; list of 8–10 priority institutions finalized for July visits</td>
-        </tr>
-        <tr data-date="2025-06-26">
-          <td>2025-06-26</td>
-          <td>Refined carousel card animations and transitions for smooth UX</td>
-          <td>Tested state-change messaging clarity; researched communication trends for students/parents</td>
-          <td>Informal outreach; updated CRM with summer program interest data</td>
-          <td>Animations optimized; clear messaging validated; growing confirmation of summer program demand</td>
-        </tr>
-        <tr data-date="2025-06-30">
-          <td>2025-06-30</td>
-          <td>Final June web development review; comprehensive portal and blockchain system testing</td>
-          <td>Consolidated research on Indian higher education trends and ed‑tech landscape</td>
-          <td>Debriefed with TWU leadership on June work; finalized July institutional visit itinerary</td>
-          <td>June complete: blockchain portal ~95% feature‑complete; admission system fully functional; CRM ready for scale</td>
+        <tr class="add-task-row" data-month="2025-06">
+          <td colspan="6">
+            <button class="btn-add-task" onclick="addTaskRow('2025-06')">+ Add Task to June</button>
+          </td>
         </tr>
 
-        <tr><td colspan="5" class="section-header">July 2025 – Institutional Visits: Bishop Heber, Loyola, St. Joseph’s</td></tr>
-        <tr data-date="2025-07-01">
+        <!-- JULY 2025 -->
+        <tr class="section-header" data-month="2025-07">
+          <td colspan="6">July 2025 – Institutional Visits: Bishop Heber, Loyola, St. Joseph's</td>
+        </tr>
+        <tr class="task-row" data-date="2025-07-01" data-month="2025-07">
           <td>2025-07-01</td>
-          <td>Continued blockchain insurer portal refinements; optimized policy workflow</td>
-          <td>Reviewed Bishop Heber College academic programs and leadership offerings</td>
-          <td>Travel to Tiruchirappalli; initial visit and introductions at Bishop Heber College</td>
-          <td>Blockchain optimizations complete; Bishop Heber engagement launched</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-outcome="true"><textarea>Blockchain insurer portal refinements; travel to Tiruchirappalli; initial visit and introductions at Bishop Heber College.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-02">
+        <tr class="task-row" data-date="2025-07-02" data-month="2025-07">
           <td>2025-07-02</td>
-          <td>Updated admission portal responsive design for tablet/desktop; refined CSS grid system</td>
-          <td>Studied Bishop Heber department structures and program alignment with TWU</td>
-          <td>Extended faculty meetings at Bishop Heber; campus tour and space exploration</td>
-          <td>Responsive design refined; potential TWU space and program fit understood</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Updated admission portal responsive design; faculty meetings at Bishop Heber; campus tour and space exploration.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-03">
+        <tr class="task-row" data-date="2025-07-03" data-month="2025-07">
           <td>2025-07-03</td>
-          <td>Designed new carousel card variants for international student communication</td>
-          <td>Analyzed Bishop Heber education programs and partnership potential</td>
-          <td>Working lunch in Tiruchirappalli with Bishop Heber contacts to refine partnership scope</td>
-          <td>Five new international‑facing carousel variants created; partnership roadmap outlined</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-outcome="true"><textarea>Designed new carousel variants for international communication; working lunch in Tiruchirappalli; partnership scope refined.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-07">
+        <tr class="task-row" data-date="2025-07-07" data-month="2025-07">
           <td>2025-07-07</td>
-          <td>Built permission and notification system for admission portal</td>
-          <td>Researched Loyola College business programs and education partnerships</td>
-          <td>Travel to Chennai; initial meeting with Loyola College Director of Business</td>
-          <td>Permission system live; Loyola signals strong interest in collaboration</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-outcome="true"><textarea>Built admission portal permission and notification system; travel to Chennai; initial meeting with Loyola business director.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-08">
+        <tr class="task-row" data-date="2025-07-08" data-month="2025-07">
           <td>2025-07-08</td>
-          <td>Refined blockchain insurer dashboard for policy tracking experience</td>
-          <td>Studied Loyola’s existing international partnerships and student pathways</td>
-          <td>Extended meeting with Loyola leadership; tour of business school facilities</td>
-          <td>Dashboard UX improved; joint summer programs and seminars discussed</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Refined blockchain dashboard UX; extended Loyola leadership meetings; business school facility tour.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-09">
+        <tr class="task-row" data-date="2025-07-09" data-month="2025-07">
           <td>2025-07-09</td>
-          <td>Implemented advanced search for admission status lookup with multi‑field filters</td>
-          <td>Analyzed education partnership models from Canadian universities</td>
-          <td>Continued Loyola meetings on curriculum alignment and recruitment channels</td>
-          <td>Advanced search in production; Loyola co‑program framework emerging</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Implemented advanced admission status search; Loyola curriculum alignment and recruitment channels discussed.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-14">
+        <tr class="task-row" data-date="2025-07-14" data-month="2025-07">
           <td>2025-07-14</td>
-          <td>Tested carousel card performance under load; optimized rendering</td>
-          <td>Reviewed St. Joseph’s College mission and academic programs</td>
-          <td>Loyola partnership check‑in; confirmed MoU drafting timeline</td>
-          <td>Carousel performance supports 1000+ concurrent users; Loyola MoU path confirmed</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Load-tested carousel performance; Loyola partnership check‑in; MoU drafting timeline confirmed.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-15">
+        <tr class="task-row" data-date="2025-07-15" data-month="2025-07">
           <td>2025-07-15</td>
-          <td>Updated CRM with July institutional visit data; enhanced contact tracking</td>
-          <td>Researched St. Joseph’s ranking and innovation initiatives</td>
-          <td>Initial contact and introduction at St. Joseph’s College (Tiruchirappalli)</td>
-          <td>CRM tracking upgraded; St. Joseph’s added as third major institutional lead</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Updated CRM with institutional data; initial contact at St. Joseph’s College; added as key institutional lead.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-16">
+        <tr class="task-row" data-date="2025-07-16" data-month="2025-07">
           <td>2025-07-16</td>
-          <td>Built email notification templates for admission updates with personalization</td>
-          <td>Studied St. Joseph’s research centers and innovation focus</td>
-          <td>Extended St. Joseph’s meetings to discuss partnership and far‑center concept</td>
-          <td>Personalized email templates ready; St. Joseph’s open to hosting TWU research presence</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Built personalized email templates; extended St. Joseph’s meetings; far‑center concept discussed.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-17">
+        <tr class="task-row" data-date="2025-07-17" data-month="2025-07">
           <td>2025-07-17</td>
-          <td>Refined state-change logic for admission card triggers and conditions</td>
-          <td>Analyzed St. Joseph’s student demographics and mobility patterns</td>
-          <td>Met St. Joseph’s student leaders to gauge interest in exchange programs</td>
-          <td>Trigger logic validated; strong student interest in TWU pathways noted</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-outcome="true"><textarea>Refined state-change trigger logic; St. Joseph’s student leaders show strong interest in TWU pathways.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-21">
+        <tr class="task-row" data-date="2025-07-21" data-month="2025-07">
           <td>2025-07-21</td>
-          <td>Integrated final admission portal features with backend APIs</td>
-          <td>Reviewed outcomes from July institutional visits</td>
-          <td>Brief check‑in calls with Bishop Heber, Loyola, and St. Joseph’s leadership</td>
-          <td>All portal features live; three‑college partnership track synchronized</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Integrated final admission portal features with backend APIs; check‑ins with all three colleges.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-22">
+        <tr class="task-row" data-date="2025-07-22" data-month="2025-07">
           <td>2025-07-22</td>
-          <td>Cleaned CRM records and consolidated institutional data</td>
-          <td>Researched multi‑institution summer program models</td>
-          <td>Follow‑up coordination emails and calls with Bishop Heber, Loyola, St. Joseph’s</td>
-          <td>CRM standardized; institutions aligned for September planning calls</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>CRM record clean-up; coordination emails; institutions aligned for September planning calls.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
         </tr>
-        <tr data-date="2025-07-28">
+        <tr class="task-row" data-date="2025-07-28" data-month="2025-07">
           <td>2025-07-28</td>
-          <td>Final July web development review; portal stability verification</td>
-          <td>Compiled research on TWU “far center” concept for Indian market</td>
-          <td>Debriefed with TWU leadership; set August parent engagement focus</td>
-          <td>July complete: admission portal fully stable; blockchain ~98% complete; clear roadmap to MoUs</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Portal stability verification; compiled research on TWU far‑center concept; leadership debrief.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="add-task-row" data-month="2025-07">
+          <td colspan="6">
+            <button class="btn-add-task" onclick="addTaskRow('2025-07')">+ Add Task to July</button>
+          </td>
         </tr>
 
-        <!-- (Continue with AUGUST, SEPTEMBER, OCTOBER, THAILAND rows exactly as in your original HTML, each daily row having data-date="YYYY-MM-DD") -->
+        <!-- AUGUST 2025 -->
+        <tr class="section-header" data-month="2025-08">
+          <td colspan="6">August 2025 – Refinement &amp; Cochin University</td>
+        </tr>
+        <tr class="task-row" data-date="2025-08-01" data-month="2025-08">
+          <td>2025-08-01</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-outcome="true"><textarea>Portal refinements; Cochin University contact established; scoped visit schedule.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="task-row" data-date="2025-08-05" data-month="2025-08">
+          <td>2025-08-05</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-outcome="true"><textarea>CRM updates; Cochin University visit planning; European partner pathways discussed.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="add-task-row" data-month="2025-08">
+          <td colspan="6">
+            <button class="btn-add-task" onclick="addTaskRow('2025-08')">+ Add Task to August</button>
+          </td>
+        </tr>
+
+        <!-- SEPTEMBER 2025 -->
+        <tr class="section-header" data-month="2025-09">
+          <td colspan="6">September 2025 – MoU Drafting &amp; Bangkok Exploration</td>
+        </tr>
+        <tr class="task-row" data-date="2025-09-01" data-month="2025-09">
+          <td>2025-09-01</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-outcome="true"><textarea>MoU template created; research into Thai education market and Bangkok schools.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="task-row" data-date="2025-09-10" data-month="2025-09">
+          <td>2025-09-10</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="4" /></td>
+          <td data-outcome="true"><textarea>Bangkok school research; initial contact with ISB and Anglo Singapore International School.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="add-task-row" data-month="2025-09">
+          <td colspan="6">
+            <button class="btn-add-task" onclick="addTaskRow('2025-09')">+ Add Task to September</button>
+          </td>
+        </tr>
+
+        <!-- OCTOBER 2025 -->
+        <tr class="section-header" data-month="2025-10">
+          <td colspan="6">October 2025 – Bangkok Immersion &amp; School Visits</td>
+        </tr>
+        <tr class="task-row" data-date="2025-10-01" data-month="2025-10">
+          <td>2025-10-01</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-outcome="true"><textarea>Arrived in Bangkok; ISB campus tour; first set of school meetings and observations.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="task-row" data-date="2025-10-06" data-month="2025-10">
+          <td>2025-10-06</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="1" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="6" /></td>
+          <td data-outcome="true"><textarea>Anglo Singapore and ASB visits; student/parent meetings; CRM updated with school data.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="task-row" data-date="2025-10-15" data-month="2025-10">
+          <td>2025-10-15</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="1" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="7" /></td>
+          <td data-outcome="true"><textarea>ECB/ICB director meetings; partnership conversations initiated; exploratory sessions with leadership teams.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="add-task-row" data-month="2025-10">
+          <td colspan="6">
+            <button class="btn-add-task" onclick="addTaskRow('2025-10')">+ Add Task to October</button>
+          </td>
+        </tr>
+
+        <!-- NOVEMBER 2025 -->
+        <tr class="section-header" data-month="2025-11">
+          <td colspan="6">November 2025 – Final Integration &amp; Planning</td>
+        </tr>
+        <tr class="task-row" data-date="2025-11-01" data-month="2025-11">
+          <td>2025-11-01</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-outcome="true"><textarea>Final Bangkok meetings; wrap‑up conversations; departure preparation.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="task-row" data-date="2025-11-05" data-month="2025-11">
+          <td>2025-11-05</td>
+          <td data-wbs="web"><input type="number" step="0.25" min="0" value="5" /></td>
+          <td data-wbs="research"><input type="number" step="0.25" min="0" value="2" /></td>
+          <td data-wbs="bd"><input type="number" step="0.25" min="0" value="3" /></td>
+          <td data-outcome="true"><textarea>Portal final testing; MoU reviews with institutional partners; next‑year planning outline.</textarea></td>
+          <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr class="add-task-row" data-month="2025-11">
+          <td colspan="6">
+            <button class="btn-add-task" onclick="addTaskRow('2025-11')">+ Add Task to November</button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -286,7 +374,7 @@
     partnerships and enrolling a small cohort of high-fee students from each institution.
   </p>
 
-  <div class="table-wrapper">
+  <div class="table-wrapper revenue-table">
     <table>
       <thead>
         <tr>
@@ -326,12 +414,12 @@
           <td>30,000</td>
           <td>300,000</td>
         </tr>
-        <tr>
-          <td><strong>Total Illustrative Potential</strong></td>
+        <tr class="revenue-total">
+          <td>Total Illustrative Potential</td>
           <td></td>
-          <td><strong>36</strong></td>
+          <td>36</td>
           <td></td>
-          <td><strong>1,210,000</strong></td>
+          <td>1,210,000</td>
         </tr>
       </tbody>
     </table>
@@ -339,49 +427,58 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js"></script>
   <script>
-    const ctxMain = document.getElementById('workHoursChart');
+    function deleteRow(button) {
+      const row = button.closest('tr');
+      if (!row) return;
+      row.remove();
+      recomputeDailyFromTable();
+    }
 
+    function addTaskRow(monthKey) {
+      const tbody = document.getElementById('work-log-body');
+      const allRows = Array.from(tbody.querySelectorAll('tr'));
+      const insertBeforeRow = allRows.find(r => r.classList.contains('add-task-row') && r.dataset.month === monthKey);
+      if (!insertBeforeRow) return;
+
+      const newDate = prompt('Enter date for new task (YYYY-MM-DD):', monthKey + '-15');
+      if (!newDate) return;
+
+      const tr = document.createElement('tr');
+      tr.className = 'task-row';
+      tr.dataset.date = newDate;
+      tr.dataset.month = monthKey;
+      tr.innerHTML = `
+        <td>${newDate}</td>
+        <td data-wbs="web"><input type="number" step="0.25" min="0" value="0" /></td>
+        <td data-wbs="research"><input type="number" step="0.25" min="0" value="0" /></td>
+        <td data-wbs="bd"><input type="number" step="0.25" min="0" value="0" /></td>
+        <td data-outcome="true"><textarea>New task.</textarea></td>
+        <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+      `;
+      tbody.insertBefore(tr, insertBeforeRow);
+      attachInputListenerToRow(tr);
+      recomputeDailyFromTable();
+    }
+
+    const ctxMain = document.getElementById('workHoursChart');
     new Chart(ctxMain, {
       type: 'bar',
       data: {
         labels: ['June','July','August','September','October','November'],
         datasets: [
-          {
-            label: 'Web / Blockchain / Portal / CRM',
-            data: [70,63,56,56,66,36],
-            backgroundColor: '#0ea5e9'
-          },
-          {
-            label: 'Research',
-            data: [15,13.5,12,24,22,12],
-            backgroundColor: '#22c55e'
-          },
-          {
-            label: 'Business Dev / Outreach',
-            data: [15,13.5,12,8,33,18],
-            backgroundColor: '#f97316'
-          }
+          { label: 'Web / Blockchain / Portal / CRM', data: [70,63,56,56,66,36], backgroundColor: '#0ea5e9' },
+          { label: 'Research', data: [15,13.5,12,24,22,12], backgroundColor: '#22c55e' },
+          { label: 'Business Dev / Outreach', data: [15,13.5,12,8,33,18], backgroundColor: '#f97316' }
         ]
       },
       options: {
         responsive: true,
         plugins: {
-          title: {
-            display: true,
-            text: 'Tech Design Focus Dominates Work Hours (Jun–Nov 2025)',
-            color: '#e5e7eb'
-          },
-          legend: {
-            position: 'top',
-            labels: { color: '#e5e7eb' }
-          }
+          title: { display: true, text: 'Tech Design Focus Dominates Work Hours (Jun–Nov 2025)', color: '#e5e7eb' },
+          legend: { position: 'top', labels: { color: '#e5e7eb' } }
         },
         scales: {
-          x: {
-            stacked: true,
-            ticks: { color: '#e5e7eb' },
-            grid: { color: '#1f2937' }
-          },
+          x: { stacked: true, ticks: { color: '#e5e7eb' }, grid: { color: '#1f2937' } },
           y: {
             stacked: true,
             title: { display: true, text: 'Total Hours', color: '#e5e7eb' },
@@ -400,41 +497,22 @@
       'Oct 1–7','Oct 8–14','Oct 15–21','Oct 22–31',
       'Nov 1–3','Nov 4–10'
     ];
-
-    const weeklyWeb = [
-      40,38,36,36,
-      34,33,32,31,
-      30,29,28,27,
-      28,27,26,25,
-      24,23,22,21,
-      10,8
-    ];
-
-    const weeklyResearch = [
-      10,9,8,8,
-      7,7,7,6,
-      6,6,5,5,
-      7,7,6,6,
-      5,5,4,4,
-      2,2
-    ];
-
-    const weeklyBD = [
-      8,8,8,7,
-      7,6,6,6,
-      6,6,6,6,
-      7,7,7,7,
-      9,10,11,12,
-      8,10
-    ];
+    const weeklyWeb =  [40,38,36,36,34,33,32,31,30,29,28,27,28,27,26,25,24,23,22,21,10,8];
+    const weeklyResearch = [10,9,8,8,7,7,7,6,6,6,5,5,7,7,6,6,5,5,4,4,2,2];
+    const weeklyBD = [8,8,8,7,7,6,6,6,6,6,6,6,7,7,7,7,9,10,11,12,8,10];
 
     function readWorkLogFromTable() {
-      const rows = document.querySelectorAll('#work-log-body tr');
+      const rows = document.querySelectorAll('#work-log-body tr.task-row');
       const log = [];
       rows.forEach(row => {
         const date = row.dataset.date;
         if (!date) return;
-        // placeholder: you will later add inputs per WBS; for now this keeps log empty
+        row.querySelectorAll('td[data-wbs]').forEach(cell => {
+          const wbs = cell.dataset.wbs;
+          const input = cell.querySelector('input');
+          const hours = parseFloat(input.value) || 0;
+          if (hours > 0) log.push({ date, wbs, hours });
+        });
       });
       return log;
     }
@@ -442,15 +520,13 @@
     function buildDailySeries(workLog) {
       const byDate = {};
       workLog.forEach(({ date, wbs, hours }) => {
-        if (!byDate[date]) {
-          byDate[date] = { web: 0, research: 0, bd: 0 };
-        }
+        if (!byDate[date]) byDate[date] = { web: 0, research: 0, bd: 0 };
         byDate[date][wbs] += hours;
       });
       const dates = Object.keys(byDate).sort();
       const labels = dates.map(d => {
-        const [y, m, day] = d.split('-');
-        return `${m}/${day}`;
+        const [y,m,day] = d.split('-');
+        return m + '/' + day;
       });
       const dailyWeb = dates.map(d => byDate[d].web);
       const dailyResearch = dates.map(d => byDate[d].research);
@@ -467,42 +543,19 @@
         data: {
           labels: ['June','July','August','September','October','November'],
           datasets: [
-            {
-              label: 'Web / Blockchain / Portal / CRM',
-              data: [70,63,56,56,66,36],
-              backgroundColor: '#0ea5e9'
-            },
-            {
-              label: 'Research',
-              data: [15,13.5,12,24,22,12],
-              backgroundColor: '#22c55e'
-            },
-            {
-              label: 'Business Dev / Outreach',
-              data: [15,13.5,12,8,33,18],
-              backgroundColor: '#f97316'
-            }
+            { label: 'Web / Blockchain / Portal / CRM', data: [70,63,56,56,66,36], backgroundColor: '#0ea5e9' },
+            { label: 'Research', data: [15,13.5,12,24,22,12], backgroundColor: '#22c55e' },
+            { label: 'Business Dev / Outreach', data: [15,13.5,12,8,33,18], backgroundColor: '#f97316' }
           ]
         },
         options: {
           responsive: true,
           plugins: {
-            title: {
-              display: true,
-              text: 'Monthly Workload by WBS (Jun–Nov 2025)',
-              color: '#e5e7eb'
-            },
-            legend: {
-              position: 'top',
-              labels: { color: '#e5e7eb' }
-            }
+            title: { display: true, text: 'Monthly Workload by WBS (Jun–Nov 2025)', color: '#e5e7eb' },
+            legend: { position: 'top', labels: { color: '#e5e7eb' } }
           },
           scales: {
-            x: {
-              stacked: true,
-              ticks: { color: '#e5e7eb' },
-              grid: { color: '#1f2937' }
-            },
+            x: { stacked: true, ticks: { color: '#e5e7eb' }, grid: { color: '#1f2937' } },
             y: {
               stacked: true,
               title: { display: true, text: 'Total Hours', color: '#e5e7eb' },
@@ -512,41 +565,21 @@
           }
         }
       },
-
       weekly: {
         type: 'bar',
         data: {
           labels: weeklyLabels,
           datasets: [
-            {
-              label: 'Web / Blockchain / Portal / CRM',
-              data: weeklyWeb,
-              backgroundColor: '#0ea5e9'
-            },
-            {
-              label: 'Research',
-              data: weeklyResearch,
-              backgroundColor: '#22c55e'
-            },
-            {
-              label: 'Business Dev / Outreach',
-              data: weeklyBD,
-              backgroundColor: '#f97316'
-            }
+            { label: 'Web / Blockchain / Portal / CRM', data: weeklyWeb, backgroundColor: '#0ea5e9' },
+            { label: 'Research', data: weeklyResearch, backgroundColor: '#22c55e' },
+            { label: 'Business Dev / Outreach', data: weeklyBD, backgroundColor: '#f97316' }
           ]
         },
         options: {
           responsive: true,
           plugins: {
-            title: {
-              display: true,
-              text: 'Weekly Workload by WBS (Jun–Nov 10, 2025)',
-              color: '#e5e7eb'
-            },
-            legend: {
-              position: 'top',
-              labels: { color: '#e5e7eb' }
-            }
+            title: { display: true, text: 'Weekly Workload by WBS (Jun–Nov 10, 2025)', color: '#e5e7eb' },
+            legend: { position: 'top', labels: { color: '#e5e7eb' } }
           },
           scales: {
             x: {
@@ -563,41 +596,21 @@
           }
         }
       },
-
       daily: {
         type: 'bar',
         data: {
           labels: dailySeries.labels,
           datasets: [
-            {
-              label: 'Web / Blockchain / Portal / CRM',
-              data: dailySeries.dailyWeb,
-              backgroundColor: '#0ea5e9'
-            },
-            {
-              label: 'Research',
-              data: dailySeries.dailyResearch,
-              backgroundColor: '#22c55e'
-            },
-            {
-              label: 'Business Dev / Outreach',
-              data: dailySeries.dailyBD,
-              backgroundColor: '#f97316'
-            }
+            { label: 'Web / Blockchain / Portal / CRM', data: dailySeries.dailyWeb, backgroundColor: '#0ea5e9' },
+            { label: 'Research', data: dailySeries.dailyResearch, backgroundColor: '#22c55e' },
+            { label: 'Business Dev / Outreach', data: dailySeries.dailyBD, backgroundColor: '#f97316' }
           ]
         },
         options: {
           responsive: true,
           plugins: {
-            title: {
-              display: true,
-              text: 'Daily Workload by WBS (Jun–Nov 10, 2025)',
-              color: '#e5e7eb'
-            },
-            legend: {
-              position: 'top',
-              labels: { color: '#e5e7eb' }
-            }
+            title: { display: true, text: 'Daily Workload by WBS (Jun–Nov 10, 2025)', color: '#e5e7eb' },
+            legend: { position: 'top', labels: { color: '#e5e7eb' } }
           },
           scales: {
             x: {
@@ -631,24 +644,45 @@
       breakdownChart = new Chart(breakdownCtx, views[view]);
     });
 
-    const workLogBody = document.getElementById('work-log-body');
-    if (workLogBody) {
-      workLogBody.addEventListener('input', () => {
-        const log = readWorkLogFromTable();
-        dailySeries = buildDailySeries(log);
-        views.daily.data.labels = dailySeries.labels;
-        views.daily.data.datasets[0].data = dailySeries.dailyWeb;
-        views.daily.data.datasets[1].data = dailySeries.dailyResearch;
-        views.daily.data.datasets[2].data = dailySeries.dailyBD;
-        if (currentView === 'daily') {
-          breakdownChart.data.labels = dailySeries.labels;
-          breakdownChart.data.datasets[0].data = dailySeries.dailyWeb;
-          breakdownChart.data.datasets[1].data = dailySeries.dailyResearch;
-          breakdownChart.data.datasets[2].data = dailySeries.dailyBD;
-          breakdownChart.update();
-        }
+    function recomputeDailyFromTable() {
+      const log = readWorkLogFromTable();
+      dailySeries = buildDailySeries(log);
+      views.daily.data.labels = dailySeries.labels;
+      views.daily.data.datasets[0].data = dailySeries.dailyWeb;
+      views.daily.data.datasets[1].data = dailySeries.dailyResearch;
+      views.daily.data.datasets[2].data = dailySeries.dailyBD;
+      if (currentView === 'daily') {
+        breakdownChart.data.labels = dailySeries.labels;
+        breakdownChart.data.datasets[0].data = dailySeries.dailyWeb;
+        breakdownChart.data.datasets[1].data = dailySeries.dailyResearch;
+        breakdownChart.data.datasets[2].data = dailySeries.dailyBD;
+        breakdownChart.update();
+      }
+    }
+
+    function attachInputListenerToRow(row) {
+      row.addEventListener('input', () => {
+        recomputeDailyFromTable();
       });
     }
+
+    document.querySelectorAll('#work-log-body tr.task-row').forEach(row => {
+      attachInputListenerToRow(row);
+    });
+
+    const tableBody = document.getElementById('work-log-body');
+    tableBody.addEventListener('click', (e) => {
+      const headerRow = e.target.closest('tr.section-header');
+      if (!headerRow) return;
+      const monthKey = headerRow.dataset.month;
+      headerRow.classList.toggle('collapsed');
+      const rows = tableBody.querySelectorAll('tr.task-row, tr.add-task-row');
+      rows.forEach(row => {
+        if (row.dataset.month === monthKey) {
+          row.classList.toggle('hidden');
+        }
+      });
+    });
   </script>
 </body>
 </html>
