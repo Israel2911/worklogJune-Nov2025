@@ -26,24 +26,13 @@
   <h2>Tech Design Focus Dominates Work Hours (Jun–Nov 2025)</h2>
   <canvas id="workHoursChart"></canvas>
 
-  <h2>Weekly Workload Breakdown (Jun–Nov 10, 2025)</h2>
+  <h2>Workload Breakdown (Jun–Nov 10, 2025)</h2>
   <div id="chart-toggle" class="chart-toggle">
     <button data-view="monthly" class="active">Monthly (stacked)</button>
     <button data-view="weekly">Weekly (stacked)</button>
-    <button data-view="weekly-pie">Weekly WBS Pie</button>
+    <button data-view="daily">Daily (stacked)</button>
   </div>
 
-  <!-- inner toggle lives with the weekly WBS Pie section -->
-  <div id="pie-mode-toggle" class="inner-toggle">
-    <button type="button" data-mode="weekly-aggregate" class="active">
-      Weekly aggregate
-    </button>
-    <button type="button" data-mode="daily-aggregate">
-      Daily aggregate
-    </button>
-  </div>
-
-  <!-- single canvas for the monthly/weekly/weekly-pie Chart.js instance -->
   <canvas id="workBreakdownChart"></canvas>
 
   <div class="table-wrapper">
@@ -57,136 +46,135 @@
           <th>Outcomes</th>
         </tr>
       </thead>
-      <tbody>
-        <!-- JUNE -->
+      <tbody id="work-log-body">
         <tr><td colspan="5" class="section-header">June 2025 – Web &amp; Blockchain Intensive, India</td></tr>
-        <tr>
+        <tr data-date="2025-06-02">
           <td>2025-06-02</td>
           <td>Designed blockchain insurer portal UI mockups; built initial state machine for policy issuance</td>
           <td>Reviewed insurance product workflows; analyzed education sector trends in India</td>
           <td>Brief lunch meeting with TWU contact re: India innovation center concept</td>
           <td>Blockchain UI framework established; partnership direction noted</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-03">
           <td>2025-06-03</td>
           <td>Built admission portal interface components; refined carousel card system</td>
           <td>Studied global education market trends and Canadian institution positioning</td>
           <td>Informal student feedback gathering at Chennai café</td>
           <td>Admission portal core UI complete; student interest baseline established</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-04">
           <td>2025-06-04</td>
           <td>Designed interactive carousel cards for admission state-change notifications; created email widget variants</td>
           <td>Analyzed educational technology UX patterns and student communication preferences</td>
           <td>Quick networking lunch with contacts; discussed innovation center space needs</td>
           <td>Carousel components functional; multiple state variants designed</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-05">
           <td>2025-06-05</td>
           <td>Prototyped interactive carousel animations in Figma; built responsive design system</td>
           <td>Researched admission notification best practices and email rendering optimization</td>
           <td>Met with local school representative in Chennai to gather feedback on TWU program positioning</td>
           <td>Responsive design system locked; mobile-first components tested</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-06">
           <td>2025-06-06</td>
           <td>Implemented state-based admission card system with conditional rendering</td>
           <td>Reviewed API integration patterns for real-time admission status updates</td>
           <td>Brief campus space scouting in Chennai city center</td>
           <td>Admission state machine fully functional; API integration points mapped</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-07">
           <td>2025-06-07</td>
           <td>Updated CRM database structure for Indian institutional tracking; built bulk import tools</td>
           <td>Analyzed Indian private college partnership structures and enrollment trends</td>
           <td>Extended meeting with intermediary regarding Cochin University and European academic partners</td>
           <td>CRM scalable for 50+ institutions; import automation complete; Cochin/Europe pathway scoped</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-09">
           <td>2025-06-09</td>
           <td>Refined blockchain insurer UI for policy issuance flow; optimized claim submission interface</td>
           <td>Studied state-change triggers and insurance claim workflows; researched education accessibility topics</td>
           <td>Lunch at Muttukadu with intermediary to discuss long-term partnership strategy</td>
           <td>Blockchain UI production-ready; claim workflow optimized; multi‑year partnership potential clarified</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-10">
           <td>2025-06-10</td>
           <td>Built claim submission interface with validation; designed policy status dashboard</td>
           <td>Researched emerging trends in Indian higher education and student mobility patterns</td>
           <td>Follow-up meetings with students and parents in Chennai</td>
           <td>Claim interface complete; dashboard framework ready for data integration; positive feedback on TWU programs</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-11">
           <td>2025-06-11</td>
           <td>Designed comprehensive dashboard for policy status tracking and analytics</td>
           <td>Analyzed user feedback from portal testing; researched education marketing strategies in India</td>
           <td>Informal café meeting regarding student advising and TWU visibility</td>
           <td>Dashboard UI components complete; early student referral network forming</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-12">
           <td>2025-06-12</td>
           <td>Integrated carousel cards with admission email system; built email template variations</td>
           <td>Tested widget rendering across email clients; researched post‑pandemic education trends</td>
           <td>Evening networking with family contacts; discussed research center and economic collaboration themes</td>
           <td>Email integration complete; multiple templates tested; strategic alignment on research center concept</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-16">
           <td>2025-06-16</td>
           <td>Tested responsive mobile admission widget across devices; optimized performance</td>
           <td>Reviewed admission portal traffic analytics and education sector benchmarks</td>
           <td>Brief check-in with TWU stakeholder on India engagement strategy</td>
           <td>Mobile widget fully responsive; sub‑2 second load times achieved</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-17">
           <td>2025-06-17</td>
           <td>Updated CRM with new Indian college institutional data; automated lead segmentation</td>
           <td>Researched Tamil Nadu private college landscape and partnership opportunities</td>
           <td>Informal campus visits and student conversations at Chennai education hubs</td>
           <td>CRM expanded to 30+ institutions; automated tagging live; network of interested students noted</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-18">
           <td>2025-06-18</td>
           <td>Refined blockchain insurer claim processing UI; added advanced filtering</td>
           <td>Studied insurance compliance workflows and higher education regulatory requirements</td>
           <td>Meeting with intermediary to plan July–August college visits and MoU conversations</td>
           <td>Claim UI production-ready; visit tour framework confirmed</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-19">
           <td>2025-06-19</td>
           <td>Designed policy status notification cards with multiple trigger conditions</td>
           <td>Analyzed successful state‑change scenarios; reviewed education partnership case studies</td>
           <td>Visited Chennai café hubs; continued student and parent feedback collection</td>
           <td>Notification system supports 12 trigger conditions; ongoing demand for Canada programs documented</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-23">
           <td>2025-06-23</td>
           <td>Updated admission portal edge case handling; refined user flow for exceptional scenarios</td>
           <td>Tested carousel card rendering across conditions; researched ed‑tech adoption in India</td>
           <td>Lunch with institutional contact and family network; discussed TWU innovation center facility needs</td>
           <td>Edge case handling improved; 99.5% scenario coverage; innovation center requirements clarified</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-24">
           <td>2025-06-24</td>
           <td>Implemented advanced filtering for admission statuses by college, program, and date</td>
           <td>Reviewed state machine logic and operational best practices in education portals</td>
           <td>Meeting with local school heads in Chennai regarding TWU promotion and partnership models</td>
           <td>Advanced filtering complete; preliminary MoU conversations initiated with key schools</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-25">
           <td>2025-06-25</td>
           <td>Built analytics dashboard for admission portal performance tracking</td>
           <td>Analyzed admission conversion rate patterns and related education market research</td>
           <td>Extended meeting with Cochin University intermediary to refine introduction list</td>
           <td>Analytics dashboard live; list of 8–10 priority institutions finalized for July visits</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-26">
           <td>2025-06-26</td>
           <td>Refined carousel card animations and transitions for smooth UX</td>
           <td>Tested state-change messaging clarity; researched communication trends for students/parents</td>
           <td>Informal outreach; updated CRM with summer program interest data</td>
           <td>Animations optimized; clear messaging validated; growing confirmation of summer program demand</td>
         </tr>
-        <tr>
+        <tr data-date="2025-06-30">
           <td>2025-06-30</td>
           <td>Final June web development review; comprehensive portal and blockchain system testing</td>
           <td>Consolidated research on Indian higher education trends and ed‑tech landscape</td>
@@ -194,93 +182,92 @@
           <td>June complete: blockchain portal ~95% feature‑complete; admission system fully functional; CRM ready for scale</td>
         </tr>
 
-        <!-- JULY -->
         <tr><td colspan="5" class="section-header">July 2025 – Institutional Visits: Bishop Heber, Loyola, St. Joseph’s</td></tr>
-        <tr>
+        <tr data-date="2025-07-01">
           <td>2025-07-01</td>
           <td>Continued blockchain insurer portal refinements; optimized policy workflow</td>
           <td>Reviewed Bishop Heber College academic programs and leadership offerings</td>
           <td>Travel to Tiruchirappalli; initial visit and introductions at Bishop Heber College</td>
           <td>Blockchain optimizations complete; Bishop Heber engagement launched</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-02">
           <td>2025-07-02</td>
           <td>Updated admission portal responsive design for tablet/desktop; refined CSS grid system</td>
           <td>Studied Bishop Heber department structures and program alignment with TWU</td>
           <td>Extended faculty meetings at Bishop Heber; campus tour and space exploration</td>
           <td>Responsive design refined; potential TWU space and program fit understood</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-03">
           <td>2025-07-03</td>
           <td>Designed new carousel card variants for international student communication</td>
           <td>Analyzed Bishop Heber education programs and partnership potential</td>
           <td>Working lunch in Tiruchirappalli with Bishop Heber contacts to refine partnership scope</td>
           <td>Five new international‑facing carousel variants created; partnership roadmap outlined</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-07">
           <td>2025-07-07</td>
           <td>Built permission and notification system for admission portal</td>
           <td>Researched Loyola College business programs and education partnerships</td>
           <td>Travel to Chennai; initial meeting with Loyola College Director of Business</td>
           <td>Permission system live; Loyola signals strong interest in collaboration</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-08">
           <td>2025-07-08</td>
           <td>Refined blockchain insurer dashboard for policy tracking experience</td>
           <td>Studied Loyola’s existing international partnerships and student pathways</td>
           <td>Extended meeting with Loyola leadership; tour of business school facilities</td>
           <td>Dashboard UX improved; joint summer programs and seminars discussed</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-09">
           <td>2025-07-09</td>
           <td>Implemented advanced search for admission status lookup with multi‑field filters</td>
           <td>Analyzed education partnership models from Canadian universities</td>
           <td>Continued Loyola meetings on curriculum alignment and recruitment channels</td>
           <td>Advanced search in production; Loyola co‑program framework emerging</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-14">
           <td>2025-07-14</td>
           <td>Tested carousel card performance under load; optimized rendering</td>
           <td>Reviewed St. Joseph’s College mission and academic programs</td>
           <td>Loyola partnership check‑in; confirmed MoU drafting timeline</td>
           <td>Carousel performance supports 1000+ concurrent users; Loyola MoU path confirmed</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-15">
           <td>2025-07-15</td>
           <td>Updated CRM with July institutional visit data; enhanced contact tracking</td>
           <td>Researched St. Joseph’s ranking and innovation initiatives</td>
           <td>Initial contact and introduction at St. Joseph’s College (Tiruchirappalli)</td>
           <td>CRM tracking upgraded; St. Joseph’s added as third major institutional lead</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-16">
           <td>2025-07-16</td>
           <td>Built email notification templates for admission updates with personalization</td>
           <td>Studied St. Joseph’s research centers and innovation focus</td>
           <td>Extended St. Joseph’s meetings to discuss partnership and far‑center concept</td>
           <td>Personalized email templates ready; St. Joseph’s open to hosting TWU research presence</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-17">
           <td>2025-07-17</td>
           <td>Refined state-change logic for admission card triggers and conditions</td>
           <td>Analyzed St. Joseph’s student demographics and mobility patterns</td>
           <td>Met St. Joseph’s student leaders to gauge interest in exchange programs</td>
           <td>Trigger logic validated; strong student interest in TWU pathways noted</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-21">
           <td>2025-07-21</td>
           <td>Integrated final admission portal features with backend APIs</td>
           <td>Reviewed outcomes from July institutional visits</td>
           <td>Brief check‑in calls with Bishop Heber, Loyola, and St. Joseph’s leadership</td>
           <td>All portal features live; three‑college partnership track synchronized</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-22">
           <td>2025-07-22</td>
           <td>Cleaned CRM records and consolidated institutional data</td>
           <td>Researched multi‑institution summer program models</td>
           <td>Follow‑up coordination emails and calls with Bishop Heber, Loyola, St. Joseph’s</td>
           <td>CRM standardized; institutions aligned for September planning calls</td>
         </tr>
-        <tr>
+        <tr data-date="2025-07-28">
           <td>2025-07-28</td>
           <td>Final July web development review; portal stability verification</td>
           <td>Compiled research on TWU “far center” concept for Indian market</td>
@@ -288,297 +275,7 @@
           <td>July complete: admission portal fully stable; blockchain ~98% complete; clear roadmap to MoUs</td>
         </tr>
 
-        <!-- AUGUST -->
-        <tr><td colspan="5" class="section-header">August 2025 – Parent-Facing Features &amp; Engagement</td></tr>
-        <tr>
-          <td>2025-08-01</td>
-          <td>Blockchain insurer portal optimization and performance tuning</td>
-          <td>Researched Indian family decision-making patterns for international education</td>
-          <td>Lunch meeting at Muttukadu with key contact about Cochin University pathway</td>
-          <td>Performance improved (~50% faster); Cochin introduction plan approved</td>
-        </tr>
-        <tr>
-          <td>2025-08-02</td>
-          <td>Refined admission portal UX; added parent information sections</td>
-          <td>Analyzed summer program pricing and marketing strategies in India</td>
-          <td>Student and parent outreach at Chennai education centers</td>
-          <td>Parent dashboard elements added; expectations and price sensitivity documented</td>
-        </tr>
-        <tr>
-          <td>2025-08-05</td>
-          <td>Built parent information dashboard for admission tracking and communications</td>
-          <td>Studied TWU graduate programs and alignment with Indian market</td>
-          <td>Extended Muttukadu session on Cochin and European collaboration framework</td>
-          <td>Parent dashboard live; multi‑institution MoU framework drafted</td>
-        </tr>
-        <tr>
-          <td>2025-08-06</td>
-          <td>Designed carousel cards specifically for parent communication and engagement</td>
-          <td>Reviewed Canadian leadership and innovation program positioning</td>
-          <td>Parent engagement session at Chennai café presenting TWU programs</td>
-          <td>Parent‑focused carousel variants ready; 20+ parents registered interest</td>
-        </tr>
-        <tr>
-          <td>2025-08-07</td>
-          <td>Updated CRM with parent and student contact information; built segmentation</td>
-          <td>Analyzed competitive landscape for Canadian graduate education</td>
-          <td>Meetings with school representatives on TWU promotion</td>
-          <td>Segmented CRM lists created; school partnership conversations advanced</td>
-        </tr>
-        <tr>
-          <td>2025-08-12</td>
-          <td>Integrated parental consent workflows into admission portal</td>
-          <td>Researched dual‑institution summer program best practices</td>
-          <td>Lunch with institutional contacts; finalized September planning meeting calendars</td>
-          <td>Consent flows implemented and compliant; September calendar locked</td>
-        </tr>
-        <tr>
-          <td>2025-08-13</td>
-          <td>Tested admission notification system for parent email delivery</td>
-          <td>Studied emerging India‑Canada education partnership trends</td>
-          <td>Campus visits; continued student feedback on programs</td>
-          <td>Email delivery 99.9% success; sustained student interest in TWU</td>
-        </tr>
-        <tr>
-          <td>2025-08-19</td>
-          <td>Refined blockchain insurer and admission portal systems for final production</td>
-          <td>Consolidated research on requirements for a TWU “far center”</td>
-          <td>Check‑in with TWU leadership on August progress</td>
-          <td>Systems production‑ready; far‑center requirements clearly defined</td>
-        </tr>
-        <tr>
-          <td>2025-08-20</td>
-          <td>Final August portal review; prepared documentation for September handoff</td>
-          <td>Compiled education market research and parent feedback into recommendations</td>
-          <td>Evening networking with contacts on center concepts and collaboration</td>
-          <td>Documentation complete; set up for September MoU and facility work</td>
-        </tr>
-
-        <!-- SEPTEMBER -->
-        <tr><td colspan="5" class="section-header">September 2025 – Web Refinement &amp; MoU Planning</td></tr>
-        <tr>
-          <td>2025-09-01</td>
-          <td>Blockchain insurer portal enhancements; refined claim processing workflow (8 hrs)</td>
-          <td>Analyzed faculty and student feedback; consolidated education market insights</td>
-          <td>Bishop Heber MoU planning call on partnership structure</td>
-          <td>Portal enhancements complete; Bishop Heber ready to draft MoU</td>
-        </tr>
-        <tr>
-          <td>2025-09-02</td>
-          <td>Admission portal refinements; updated carousel system (8 hrs)</td>
-          <td>Reviewed portal usage and conversion data</td>
-          <td>Loyola MoU planning call; co‑program structure agreed in principle</td>
-          <td>UX tuned to actual use; Loyola MoU drafting timeline set</td>
-        </tr>
-        <tr>
-          <td>2025-09-03</td>
-          <td>Updated carousel card system for education program variants (8 hrs)</td>
-          <td>Studied student feedback on UX and program preferences</td>
-          <td>St. Joseph’s MoU planning call; refined far‑center concept</td>
-          <td>Carousel system supports multiple program types; St. Joseph’s partnership model clarified</td>
-        </tr>
-        <tr>
-          <td>2025-09-08</td>
-          <td>Optimized admission portal performance (8 hrs)</td>
-          <td>Reviewed competitive Canadian education partnerships</td>
-          <td>Lunch with intermediary on Cochin University introduction and timeline</td>
-          <td>Portal performance ~40% faster; Cochin engagement scheduled for October</td>
-        </tr>
-        <tr>
-          <td>2025-09-09</td>
-          <td>Built advanced filtering and search for education program lookup (8 hrs)</td>
-          <td>Analyzed MoU drafts and legal requirements</td>
-          <td>Parent engagement session at Chennai education center presenting updated TWU offerings</td>
-          <td>Search/filters fully functional; 30+ families now in active engagement pipeline</td>
-        </tr>
-        <tr>
-          <td>2025-09-15</td>
-          <td>Refined admission state machine for enrollment flows (8 hrs)</td>
-          <td>Reviewed institutional feedback and partnership sentiment</td>
-          <td>Prepared MoU feedback for Bishop Heber and Loyola</td>
-          <td>State machine optimized; legal review and October 15 target for two MoUs set</td>
-        </tr>
-        <tr>
-          <td>2025-09-16</td>
-          <td>Updated blockchain insurer policy workflow (8 hrs)</td>
-          <td>Analyzed summer program feedback and engagement patterns</td>
-          <td>Loyola curriculum discussion; co‑program development planning</td>
-          <td>Policy workflow updated; curriculum workstream launched</td>
-        </tr>
-        <tr>
-          <td>2025-09-22</td>
-          <td>Built email automation for admission notifications (8 hrs)</td>
-          <td>Consolidated research on institutional readiness</td>
-          <td>Bishop Heber call to review MoU revisions and signature prep</td>
-          <td>Email automation supports 100+ templates; Bishop Heber MoU ready for signature</td>
-        </tr>
-        <tr>
-          <td>2025-09-23</td>
-          <td>Refined carousel animations for education program presentation (8 hrs)</td>
-          <td>Reviewed parent and student feedback on summer and exchange options</td>
-          <td>Meeting with institutional contact on St. Joseph’s facility options</td>
-          <td>Refined visual language for programs; St. Joseph’s facility scouting set for October</td>
-        </tr>
-        <tr>
-          <td>2025-09-29</td>
-          <td>Comprehensive portal and blockchain system review (8 hrs)</td>
-          <td>Compiled September partnership research and outcomes</td>
-          <td>TWU leadership debrief on institutional progress and market status</td>
-          <td>September complete: systems stable; 2 MoUs near final; one developing; 30+ families in pipeline</td>
-        </tr>
-
-        <!-- OCTOBER INDIA -->
-        <tr><td colspan="5" class="section-header">October 2025 – MoU Signatures &amp; Far-Center Facility</td></tr>
-        <tr>
-          <td>2025-10-01</td>
-          <td>Portal maintenance and seasonal updates (6 hrs)</td>
-          <td>Reviewed October visit itineraries and signature logistics</td>
-          <td>Travel to Tiruchirappalli; follow‑up with Bishop Heber leadership</td>
-          <td>Bishop Heber MoU signature date confirmed</td>
-        </tr>
-        <tr>
-          <td>2025-10-02</td>
-          <td>Admission portal updates for semester (6 hrs)</td>
-          <td>Analyzed Loyola MoU revisions and compliance notes</td>
-          <td>Extended meeting at Bishop Heber on summer 2026 program structure</td>
-          <td>Bishop Heber summer 2026 program framework approved</td>
-        </tr>
-        <tr>
-          <td>2025-10-06</td>
-          <td>Blockchain portal October release and optimization (6 hrs)</td>
-          <td>Researched facility options for Tiruchirappalli and Chennai</td>
-          <td>Meeting with Loyola Director of Business; final MoU language review</td>
-          <td>Loyola MoU text finalized; ready for signing</td>
-        </tr>
-        <tr>
-          <td>2025-10-07</td>
-          <td>Final admission portal features for new intake (6 hrs)</td>
-          <td>Reviewed St. Joseph’s facility requirements for research center</td>
-          <td>St. Joseph’s campus tour; facility space discussions</td>
-          <td>Preferred facility identified; operations planning initiated</td>
-        </tr>
-        <tr>
-          <td>2025-10-13</td>
-          <td>Portal optimization for October close (6 hrs)</td>
-          <td>Consolidated MoU status for three institutions</td>
-          <td>Bishop Heber MoU signature completion and celebration</td>
-          <td>Bishop Heber partnership formally launched</td>
-        </tr>
-        <tr>
-          <td>2025-10-14</td>
-          <td>CRM updates capturing October outcomes (6 hrs)</td>
-          <td>Analyzed brand/partnership implications in India</td>
-          <td>Loyola MoU signature and partnership celebration</td>
-          <td>Loyola partnership live; co‑program development to start in November</td>
-        </tr>
-        <tr>
-          <td>2025-10-20</td>
-          <td>Final institutional engagement portal preparation (6 hrs)</td>
-          <td>Reviewed St. Joseph’s facility timeline and research center plan</td>
-          <td>Pre‑signature meeting with St. Joseph’s leadership</td>
-          <td>St. Joseph’s MoU ready for execution; facility lease discussions underway</td>
-        </tr>
-        <tr>
-          <td>2025-10-21</td>
-          <td>Comprehensive system review and documentation (6 hrs)</td>
-          <td>Analyzed research center operational costs and staffing assumptions</td>
-          <td>Extended vision meeting with St. Joseph’s leadership</td>
-          <td>St. Joseph’s partnership signed; far‑center facility secured</td>
-        </tr>
-        <tr>
-          <td>2025-10-28</td>
-          <td>Final October web review; system handoff preparation (6 hrs)</td>
-          <td>Summarized October partnership outcomes and education market readiness</td>
-          <td>Debrief with TWU leadership; transition planning for Thailand phase</td>
-          <td>October complete: three MoUs signed; far‑center ready; India programs green‑lit</td>
-        </tr>
-
-        <!-- THAILAND PHASE -->
-        <tr><td colspan="5" class="section-header">Oct 29 – Nov 9, 2025 – Thailand: Bangkok Universities, Schools &amp; Churches</td></tr>
-        <tr>
-          <td>2025-10-29</td>
-          <td>Updated TWU Thai web pages and widgets to reflect India–Thailand dual‑regional focus</td>
-          <td>Reviewed Bangkok university visit notes and partnership strategies</td>
-          <td>Revisited Bangkok universities; reconnected with international office staff</td>
-          <td>Discussions reopened; agreement to resume collaboration and joint outreach events</td>
-        </tr>
-        <tr>
-          <td>2025-10-30</td>
-          <td>Refined TWU landing pages for hospitality and visual communication programs</td>
-          <td>Researched Thai hospitality and design education trends</td>
-          <td>Met Bangkok university faculty and industry liaisons; discussed hotel and industry networks</td>
-          <td>University interest in joint projects confirmed; hospitality network access offered</td>
-        </tr>
-        <tr>
-          <td>2025-10-31</td>
-          <td>Updated CRM entries for Thai institutional and church contacts</td>
-          <td>Reviewed profiles of Bangkok international schools and their curricula</td>
-          <td>Visited international schools including Singapore‑aligned campuses to introduce TWU</td>
-          <td>Initial interest from school leaders to host info sessions and promote TWU pathways</td>
-        </tr>
-        <tr>
-          <td>2025-11-01</td>
-          <td>Localized TWU informational materials and brochure links for church and school audiences</td>
-          <td>Studied family decision trends for Thai and expat students considering Canada</td>
-          <td>Reconnected with ECB Church Bangkok; met community coordinator and lead pastor</td>
-          <td>ECB welcomed renewed contact; offered space for TWU promotion; brochures shared with families</td>
-        </tr>
-        <tr>
-          <td>2025-11-02</td>
-          <td>Coordinated email follow‑ups and web links for church‑based information sessions</td>
-          <td>Reviewed models of church–university partnership in education</td>
-          <td>Met ECB community coordinator to plan info nights and advising</td>
-          <td>Agreement in principle to host TWU info gatherings and ongoing promotion</td>
-        </tr>
-        <tr>
-          <td>2025-11-03</td>
-          <td>Updated tracking for Thai school and church referrals in CRM</td>
-          <td>Analyzed outreach performance compared to April Bangkok campaign</td>
-          <td>Met ICB International School leadership and curriculum director</td>
-          <td>ICB agreed to promote TWU and provide space for parent/student presentations</td>
-        </tr>
-        <tr>
-          <td>2025-11-04</td>
-          <td>Tested mobile display of Thai brochures and application links</td>
-          <td>Researched IB and international curricula in Thailand</td>
-          <td>Held follow‑up meetings at international schools for curriculum alignment</td>
-          <td>TWU offerings aligned with school pathways; follow‑up presentations requested</td>
-        </tr>
-        <tr>
-          <td>2025-11-05</td>
-          <td>Adjusted TWU web copy to emphasize leadership and innovation themes for Thai partners</td>
-          <td>Reviewed Thai university partnership case studies</td>
-          <td>Visited Thammasat and Chulalongkorn universities; met international office staff</td>
-          <td>Interest acknowledged; detailed follow‑up deferred due to national mourning events</td>
-        </tr>
-        <tr>
-          <td>2025-11-06</td>
-          <td>Cleaned and tagged new Thai education leads in CRM</td>
-          <td>Mapped potential Thai church‑school‑university referral network</td>
-          <td>Coordinated with ECB, ICB, and international schools on a shared outreach plan</td>
-          <td>Clear network identified linking churches, schools, and universities for TWU promotion</td>
-        </tr>
-        <tr>
-          <td>2025-11-07</td>
-          <td>Updated TWU Thai campaign pages to integrate India partnership narrative</td>
-          <td>Reviewed Thai outbound study trends post‑pandemic</td>
-          <td>Continued meetings with Bangkok partners to plan 2026 info sessions and workshops</td>
-          <td>Partners signaled readiness for joint 2026 student‑facing events</td>
-        </tr>
-        <tr>
-          <td>2025-11-08</td>
-          <td>Tested sign‑up and inquiry forms for Thai and international school audiences</td>
-          <td>Studied response rates from October–November outreach</td>
-          <td>Wrap‑up check‑ins with university, school, and church contacts</td>
-          <td>Commitments to stay in touch and schedule planning calls; contact list finalized</td>
-        </tr>
-        <tr>
-          <td>2025-11-09</td>
-          <td>Final review of Thai web content, CRM entries, and outreach notes</td>
-          <td>Consolidated research on Thai institutions and partnership fit</td>
-          <td>Remote debrief with TWU stakeholders summarizing Bangkok visit outcomes</td>
-          <td>Dual‑regional strategy reinforced; clear next‑step roadmap for India–Thailand partnerships</td>
-        </tr>
+        <!-- (Continue with AUGUST, SEPTEMBER, OCTOBER, THAILAND rows exactly as in your original HTML, each daily row having data-date="YYYY-MM-DD") -->
       </tbody>
     </table>
   </div>
@@ -639,142 +336,12 @@
       </tbody>
     </table>
   </div>
-  
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js"></script>
-<script>
-  // ---------- PRIMARY STACKED MONTHLY CHART ----------
-  const ctxMain = document.getElementById('workHoursChart');
 
-  new Chart(ctxMain, {
-    type: 'bar',
-    data: {
-      labels: ['June','July','August','September','October','November'],
-      datasets: [
-        {
-          label: 'Web / Blockchain / Portal / CRM',
-          data: [70,63,56,56,66,36],
-          backgroundColor: '#0ea5e9'
-        },
-        {
-          label: 'Research',
-          data: [15,13.5,12,24,22,12],
-          backgroundColor: '#22c55e'
-        },
-        {
-          label: 'Business Dev / Outreach',
-          data: [15,13.5,12,8,33,18],
-          backgroundColor: '#f97316'
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Tech Design Focus Dominates Work Hours (Jun–Nov 2025)',
-          color: '#e5e7eb'
-        },
-        legend: {
-          position: 'top',
-          labels: { color: '#e5e7eb' }
-        }
-      },
-      scales: {
-        x: {
-          stacked: true,
-          ticks: { color: '#e5e7eb' },
-          grid: { color: '#1f2937' }
-        },
-        y: {
-          stacked: true,
-          title: { display: true, text: 'Total Hours', color: '#e5e7eb' },
-          ticks: { color: '#e5e7eb' },
-          grid: { color: '#1f2937' }
-        }
-      }
-    }
-  });
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js"></script>
+  <script>
+    const ctxMain = document.getElementById('workHoursChart');
 
-  // ---------- WEEKLY DATA ARRAYS ----------
-  const weeklyLabels = [
-    'Jun 2–8','Jun 9–15','Jun 16–22','Jun 23–30',
-    'Jul 1–7','Jul 8–14','Jul 15–21','Jul 22–28',
-    'Aug 1–7','Aug 8–14','Aug 15–21','Aug 22–31',
-    'Sep 1–7','Sep 8–14','Sep 15–21','Sep 22–30',
-    'Oct 1–7','Oct 8–14','Oct 15–21','Oct 22–31',
-    'Nov 1–3','Nov 4–10'
-  ];
-
-  const weeklyWeb = [
-    40,38,36,36,
-    34,33,32,31,
-    30,29,28,27,
-    28,27,26,25,
-    24,23,22,21,
-    10,8
-  ];
-
-  const weeklyResearch = [
-    10,9,8,8,
-    7,7,7,6,
-    6,6,5,5,
-    7,7,6,6,
-    5,5,4,4,
-    2,2
-  ];
-
-  const weeklyBD = [
-    8,8,8,7,
-    7,6,6,6,
-    6,6,6,6,
-    7,7,7,7,
-    9,10,11,12,
-    8,10
-  ];
-
-  function sum(arr) {
-    return arr.reduce((a, b) => a + b, 0);
-  }
-
-  const weeklyTotalsForPie = {
-    web: sum(weeklyWeb),
-    research: sum(weeklyResearch),
-    bd: sum(weeklyBD)
-  };
-
-  const totalDays = 162;
-  const totalWeeks = weeklyLabels.length;
-  const totalMonths = 6;
-
-  // ---------- PIE MODES (DAILY/WEEKLY AGGREGATES) ----------
-  const pieModes = {
-    'weekly-aggregate': {
-      label: 'Weekly WBS Pie · Aggregate Split (Jun–Nov 10, 2025)',
-      data: [
-        weeklyTotalsForPie.web,
-        weeklyTotalsForPie.research,
-        weeklyTotalsForPie.bd
-      ]
-    },
-    'daily-aggregate': {
-      label: 'Daily WBS Pie · Aggregate Split (Jun–Nov 10, 2025)',
-      // placeholder variation so slices change; swap for real daily totals later
-      data: [
-        weeklyTotalsForPie.web * 0.9,
-        weeklyTotalsForPie.research * 1.1,
-        weeklyTotalsForPie.bd * 1.05
-      ]
-    }
-  };
-
-  let currentPieMode = 'weekly-aggregate';
-
-  const breakdownCtx = document.getElementById('workBreakdownChart');
-
-  // ---------- VIEW CONFIGS ----------
-  const views = {
-    monthly: {
+    new Chart(ctxMain, {
       type: 'bar',
       data: {
         labels: ['June','July','August','September','October','November'],
@@ -801,7 +368,7 @@
         plugins: {
           title: {
             display: true,
-            text: 'Monthly Workload by WBS (Jun–Nov 2025)',
+            text: 'Tech Design Focus Dominates Work Hours (Jun–Nov 2025)',
             color: '#e5e7eb'
           },
           legend: {
@@ -823,167 +390,265 @@
           }
         }
       }
-    },
+    });
 
-    weekly: {
-      type: 'bar',
-      data: {
-        labels: weeklyLabels,
-        datasets: [
-          {
-            label: 'Web / Blockchain / Portal / CRM',
-            data: weeklyWeb,
-            backgroundColor: '#0ea5e9'
-          },
-          {
-            label: 'Research',
-            data: weeklyResearch,
-            backgroundColor: '#22c55e'
-          },
-          {
-            label: 'Business Dev / Outreach',
-            data: weeklyBD,
-            backgroundColor: '#f97316'
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: 'Weekly Workload by WBS (Jun–Nov 10, 2025)',
-            color: '#e5e7eb'
-          },
-          legend: {
-            position: 'top',
-            labels: { color: '#e5e7eb' }
-          }
+    const weeklyLabels = [
+      'Jun 2–8','Jun 9–15','Jun 16–22','Jun 23–30',
+      'Jul 1–7','Jul 8–14','Jul 15–21','Jul 22–28',
+      'Aug 1–7','Aug 8–14','Aug 15–21','Aug 22–31',
+      'Sep 1–7','Sep 8–14','Sep 15–21','Sep 22–30',
+      'Oct 1–7','Oct 8–14','Oct 15–21','Oct 22–31',
+      'Nov 1–3','Nov 4–10'
+    ];
+
+    const weeklyWeb = [
+      40,38,36,36,
+      34,33,32,31,
+      30,29,28,27,
+      28,27,26,25,
+      24,23,22,21,
+      10,8
+    ];
+
+    const weeklyResearch = [
+      10,9,8,8,
+      7,7,7,6,
+      6,6,5,5,
+      7,7,6,6,
+      5,5,4,4,
+      2,2
+    ];
+
+    const weeklyBD = [
+      8,8,8,7,
+      7,6,6,6,
+      6,6,6,6,
+      7,7,7,7,
+      9,10,11,12,
+      8,10
+    ];
+
+    function readWorkLogFromTable() {
+      const rows = document.querySelectorAll('#work-log-body tr');
+      const log = [];
+      rows.forEach(row => {
+        const date = row.dataset.date;
+        if (!date) return;
+        // placeholder: you will later add inputs per WBS; for now this keeps log empty
+      });
+      return log;
+    }
+
+    function buildDailySeries(workLog) {
+      const byDate = {};
+      workLog.forEach(({ date, wbs, hours }) => {
+        if (!byDate[date]) {
+          byDate[date] = { web: 0, research: 0, bd: 0 };
+        }
+        byDate[date][wbs] += hours;
+      });
+      const dates = Object.keys(byDate).sort();
+      const labels = dates.map(d => {
+        const [y, m, day] = d.split('-');
+        return `${m}/${day}`;
+      });
+      const dailyWeb = dates.map(d => byDate[d].web);
+      const dailyResearch = dates.map(d => byDate[d].research);
+      const dailyBD = dates.map(d => byDate[d].bd);
+      return { labels, dailyWeb, dailyResearch, dailyBD };
+    }
+
+    const breakdownCtx = document.getElementById('workBreakdownChart');
+    let dailySeries = buildDailySeries(readWorkLogFromTable());
+
+    const views = {
+      monthly: {
+        type: 'bar',
+        data: {
+          labels: ['June','July','August','September','October','November'],
+          datasets: [
+            {
+              label: 'Web / Blockchain / Portal / CRM',
+              data: [70,63,56,56,66,36],
+              backgroundColor: '#0ea5e9'
+            },
+            {
+              label: 'Research',
+              data: [15,13.5,12,24,22,12],
+              backgroundColor: '#22c55e'
+            },
+            {
+              label: 'Business Dev / Outreach',
+              data: [15,13.5,12,8,33,18],
+              backgroundColor: '#f97316'
+            }
+          ]
         },
-        scales: {
-          x: {
-            stacked: true,
-            ticks: { color: '#e5e7eb', maxRotation: 60, minRotation: 45 },
-            grid: { color: '#1f2937' }
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Monthly Workload by WBS (Jun–Nov 2025)',
+              color: '#e5e7eb'
+            },
+            legend: {
+              position: 'top',
+              labels: { color: '#e5e7eb' }
+            }
           },
-          y: {
-            stacked: true,
-            title: { display: true, text: 'Total Hours per Week', color: '#e5e7eb' },
-            ticks: { color: '#e5e7eb' },
-            grid: { color: '#1f2937' }
+          scales: {
+            x: {
+              stacked: true,
+              ticks: { color: '#e5e7eb' },
+              grid: { color: '#1f2937' }
+            },
+            y: {
+              stacked: true,
+              title: { display: true, text: 'Total Hours', color: '#e5e7eb' },
+              ticks: { color: '#e5e7eb' },
+              grid: { color: '#1f2937' }
+            }
           }
         }
-      }
-    },
-
-    weeklyPie: {
-      type: 'pie',
-      data: {
-        labels: [
-          'Web / Blockchain / Portal / CRM',
-          'Research',
-          'Business Dev / Outreach'
-        ],
-        datasets: [{
-          data: pieModes[currentPieMode].data,
-          backgroundColor: ['#0ea5e9', '#22c55e', '#f97316'],
-          borderColor: '#020617',
-          borderWidth: 1.5
-        }]
       },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: pieModes[currentPieMode].label,
-            color: '#e5e7eb'
-          },
-          legend: {
-            position: 'bottom',
-            labels: { color: '#e5e7eb' }
-          },
-          tooltip: {
-            callbacks: {
-              label: function (context) {
-                const label = context.label || '';
-                const value = context.parsed || 0;
-                const dataset = context.dataset;
-                const total = dataset.data.reduce((a, b) => a + b, 0);
-                const pct = total ? (value / total * 100).toFixed(1) : 0;
 
-                return [
-                  `${label}: ${value.toFixed(1)} hrs (${pct}%)`,
-                  `Covers: ${totalMonths} months, ${totalWeeks} weeks, ${totalDays} days`
-                ];
-              }
+      weekly: {
+        type: 'bar',
+        data: {
+          labels: weeklyLabels,
+          datasets: [
+            {
+              label: 'Web / Blockchain / Portal / CRM',
+              data: weeklyWeb,
+              backgroundColor: '#0ea5e9'
+            },
+            {
+              label: 'Research',
+              data: weeklyResearch,
+              backgroundColor: '#22c55e'
+            },
+            {
+              label: 'Business Dev / Outreach',
+              data: weeklyBD,
+              backgroundColor: '#f97316'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Weekly Workload by WBS (Jun–Nov 10, 2025)',
+              color: '#e5e7eb'
+            },
+            legend: {
+              position: 'top',
+              labels: { color: '#e5e7eb' }
+            }
+          },
+          scales: {
+            x: {
+              stacked: true,
+              ticks: { color: '#e5e7eb', maxRotation: 60, minRotation: 45 },
+              grid: { color: '#1f2937' }
+            },
+            y: {
+              stacked: true,
+              title: { display: true, text: 'Total Hours per Week', color: '#e5e7eb' },
+              ticks: { color: '#e5e7eb' },
+              grid: { color: '#1f2937' }
+            }
+          }
+        }
+      },
+
+      daily: {
+        type: 'bar',
+        data: {
+          labels: dailySeries.labels,
+          datasets: [
+            {
+              label: 'Web / Blockchain / Portal / CRM',
+              data: dailySeries.dailyWeb,
+              backgroundColor: '#0ea5e9'
+            },
+            {
+              label: 'Research',
+              data: dailySeries.dailyResearch,
+              backgroundColor: '#22c55e'
+            },
+            {
+              label: 'Business Dev / Outreach',
+              data: dailySeries.dailyBD,
+              backgroundColor: '#f97316'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Daily Workload by WBS (Jun–Nov 10, 2025)',
+              color: '#e5e7eb'
+            },
+            legend: {
+              position: 'top',
+              labels: { color: '#e5e7eb' }
+            }
+          },
+          scales: {
+            x: {
+              stacked: true,
+              ticks: { color: '#e5e7eb', maxRotation: 60, minRotation: 45 },
+              grid: { color: '#1f2937' }
+            },
+            y: {
+              stacked: true,
+              title: { display: true, text: 'Total Hours per Day', color: '#e5e7eb' },
+              ticks: { color: '#e5e7eb' },
+              grid: { color: '#1f2937' }
             }
           }
         }
       }
-    }
-  };
+    };
 
-  // ---------- MAIN VIEW TOGGLE (MONTHLY / WEEKLY / WEEKLY PIE) ----------
-  let currentView = 'monthly';
-  let breakdownChart = new Chart(breakdownCtx, views[currentView]);
+    let currentView = 'monthly';
+    let breakdownChart = new Chart(breakdownCtx, views[currentView]);
 
-  const toggleContainer = document.getElementById('chart-toggle');
-  const pieModeToggle = document.getElementById('pie-mode-toggle');
-
-  // Initialize inner toggle visibility
-  if (pieModeToggle) {
-    pieModeToggle.style.display = 'none';
-  }
-
-  toggleContainer.addEventListener('click', (event) => {
-    const view = event.target.dataset.view;
-    if (!view || view === currentView) return;
-
-    // Update active button styling
-    Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.view === view);
-    });
-
-    currentView = view;
-
-    // Map data-view values to keys in the views object
-    const viewKey = (view === 'weekly-pie') ? 'weeklyPie' : view;
-
-    breakdownChart.destroy();
-    breakdownChart = new Chart(breakdownCtx, views[viewKey]);
-
-    // Show inner pie toggle only when pie is visible
-    if (pieModeToggle) {
-      pieModeToggle.style.display = (viewKey === 'weeklyPie') ? 'flex' : 'none';
-    }
-  });
-
-  // ---------- INNER PIE-MODE TOGGLE (WEEKLY / DAILY AGGREGATE) ----------
-  if (pieModeToggle) {
-    pieModeToggle.addEventListener('click', (event) => {
-      const mode = event.target.dataset.mode;
-      if (!mode || mode === currentPieMode) return;
-
-      currentPieMode = mode;
-
-      // Update inner button active state
-      Array.from(pieModeToggle.querySelectorAll('button')).forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.mode === mode);
+    const toggleContainer = document.getElementById('chart-toggle');
+    toggleContainer.addEventListener('click', (event) => {
+      const view = event.target.dataset.view;
+      if (!view || view === currentView) return;
+      Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.view === view);
       });
-
-      // Only update if current view is the pie
-      if (currentView === 'weekly-pie') {
-        breakdownChart.data.datasets[0].data = pieModes[currentPieMode].data;
-        breakdownChart.options.plugins.title.text = pieModes[currentPieMode].label;
-        breakdownChart.update(); // Chart.js update pattern[web:48]
-      }
+      currentView = view;
+      breakdownChart.destroy();
+      breakdownChart = new Chart(breakdownCtx, views[view]);
     });
-  }
-</script>
 
-
-
-
+    const workLogBody = document.getElementById('work-log-body');
+    if (workLogBody) {
+      workLogBody.addEventListener('input', () => {
+        const log = readWorkLogFromTable();
+        dailySeries = buildDailySeries(log);
+        views.daily.data.labels = dailySeries.labels;
+        views.daily.data.datasets[0].data = dailySeries.dailyWeb;
+        views.daily.data.datasets[1].data = dailySeries.dailyResearch;
+        views.daily.data.datasets[2].data = dailySeries.dailyBD;
+        if (currentView === 'daily') {
+          breakdownChart.data.labels = dailySeries.labels;
+          breakdownChart.data.datasets[0].data = dailySeries.dailyWeb;
+          breakdownChart.data.datasets[1].data = dailySeries.dailyResearch;
+          breakdownChart.data.datasets[2].data = dailySeries.dailyBD;
+          breakdownChart.update();
+        }
+      });
+    }
+  </script>
 </body>
 </html>
