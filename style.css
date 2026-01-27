@@ -168,12 +168,112 @@ tbody tr:nth-child(odd) td {
   font-size: 13px;
   text-align: left;
   border-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-header.collapsed {
+  opacity: 0.9;
+}
+
+.section-header::before {
+  content: "▼ ";
+  display: inline-block;
+  margin-right: 6px;
+  transform-origin: center;
+  transition: transform 0.2s;
+}
+
+.section-header.collapsed::before {
+  transform: rotate(-90deg);
 }
 
 /* Slight emphasis on BD / Outcomes columns */
 td:nth-child(4),
 td:nth-child(5) {
   color: #e5e7eb;
+}
+
+/* Inputs / textareas inside table */
+.task-row input[type="number"],
+.task-row textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.task-row input[type="number"]:focus,
+.task-row textarea:focus {
+  outline: 1px solid #38bdf8;
+  border-color: #38bdf8;
+}
+
+.task-row textarea {
+  min-height: 48px;
+}
+
+/* Hide rows when a month is collapsed (JS toggles .hidden on these) */
+.task-row.hidden,
+.add-task-row.hidden {
+  display: none;
+}
+
+/* Add-task row */
+.add-task-row td {
+  text-align: center;
+  background: #020617;
+}
+
+.btn-add-task {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+  background: #0ea5e9;
+  color: #020617;
+  cursor: pointer;
+}
+
+.btn-add-task:hover {
+  background: #38bdf8;
+}
+
+/* Action buttons */
+.btn-action {
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+  background: #111827;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background: #b91c1c;
+  border-color: #7f1d1d;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+}
+
+/* Revenue table tweaks */
+.revenue-table table {
+  min-width: 0;
+  font-size: 13px;
+}
+
+.revenue-total td {
+  font-weight: 600;
+  color: #facc15;
 }
 
 /* Responsive tweaks */
