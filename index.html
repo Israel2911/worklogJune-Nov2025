@@ -878,39 +878,42 @@
           }
         }
       },
-      weeklyPie: {
-        type: 'pie',
-        data: {
-          labels: [
-            'Web / Blockchain / Portal / CRM',
-            'Research',
-            'Business Dev / Outreach'
-          ],
-          datasets: [{
-            data: [
-              weeklyTotalsForPie.web,
-              weeklyTotalsForPie.research,
-              weeklyTotalsForPie.bd
-            ],
-            backgroundColor: ['#0ea5e9', '#22c55e', '#f97316']
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            title: {
-              display: true,
-              text: 'Aggregate WBS Split (Jun–Nov 10, 2025)',
-              color: '#e5e7eb'
-            },
-            legend: {
-              position: 'bottom',
-              labels: { color: '#e5e7eb' }
-            }
-          }
-        }
+views.weeklyPie = {
+  type: 'pie',
+  data: {
+    labels: [
+      'Web / Blockchain / Portal / CRM',
+      'Research',
+      'Business Dev / Outreach'
+    ],
+    datasets: [{
+      data: [
+        weeklyTotalsForPie.web,
+        weeklyTotalsForPie.research,
+        weeklyTotalsForPie.bd
+      ],
+      backgroundColor: ['#0ea5e9', '#22c55e', '#f97316'],
+      borderColor: '#020617',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Aggregate WBS Split (Jun–Nov 10, 2025)',
+        color: '#e5e7eb'
+      },
+      legend: {
+        position: 'bottom',
+        labels: { color: '#e5e7eb' }
       }
-    };
+    }
+  }
+};
+
 
     let currentView = 'monthly';
     let breakdownChart = new Chart(breakdownCtx, views[currentView]);
