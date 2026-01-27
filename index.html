@@ -23,7 +23,6 @@
     Approximate allocation across all months based on detailed daily entries in the work log.
   </p>
 
-  <!-- Stacked bar chart for hours by month -->
   <h2>Tech Design Focus Dominates Work Hours (Jun–Nov 2025)</h2>
   <canvas id="workHoursChart"></canvas>
 
@@ -32,15 +31,15 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th>Web/CRM/SEO (2 hrs)</th>
-          <th>Research (1 hr)</th>
-          <th>Business Development/Meetings/Outreach (5 hrs)</th>
+          <th>Web / Blockchain / Portal / CRM</th>
+          <th>Research</th>
+          <th>Business Development / Meetings / Outreach</th>
           <th>Outcomes</th>
         </tr>
       </thead>
       <tbody>
         <!-- JUNE -->
-        <tr><td colspan="5" class="section-header">June 2025 – Web & Blockchain Intensive, India</td></tr>
+        <tr><td colspan="5" class="section-header">June 2025 – Web &amp; Blockchain Intensive, India</td></tr>
         <tr>
           <td>2025-06-02</td>
           <td>Designed blockchain insurer portal UI mockups; built initial state machine for policy issuance</td>
@@ -270,7 +269,7 @@
         </tr>
 
         <!-- AUGUST -->
-        <tr><td colspan="5" class="section-header">August 2025 – Parent-Facing Features & Engagement</td></tr>
+        <tr><td colspan="5" class="section-header">August 2025 – Parent-Facing Features &amp; Engagement</td></tr>
         <tr>
           <td>2025-08-01</td>
           <td>Blockchain insurer portal optimization and performance tuning</td>
@@ -336,7 +335,7 @@
         </tr>
 
         <!-- SEPTEMBER -->
-        <tr><td colspan="5" class="section-header">September 2025 – Web Refinement & MoU Planning</td></tr>
+        <tr><td colspan="5" class="section-header">September 2025 – Web Refinement &amp; MoU Planning</td></tr>
         <tr>
           <td>2025-09-01</td>
           <td>Blockchain insurer portal enhancements; refined claim processing workflow (8 hrs)</td>
@@ -409,7 +408,7 @@
         </tr>
 
         <!-- OCTOBER INDIA -->
-        <tr><td colspan="5" class="section-header">October 2025 – MoU Signatures & Far-Center Facility</td></tr>
+        <tr><td colspan="5" class="section-header">October 2025 – MoU Signatures &amp; Far-Center Facility</td></tr>
         <tr>
           <td>2025-10-01</td>
           <td>Portal maintenance and seasonal updates (6 hrs)</td>
@@ -475,7 +474,7 @@
         </tr>
 
         <!-- THAILAND PHASE -->
-        <tr><td colspan="5" class="section-header">Oct 29 – Nov 9, 2025 – Thailand: Bangkok Universities, Schools & Churches</td></tr>
+        <tr><td colspan="5" class="section-header">Oct 29 – Nov 9, 2025 – Thailand: Bangkok Universities, Schools &amp; Churches</td></tr>
         <tr>
           <td>2025-10-29</td>
           <td>Updated TWU Thai web pages and widgets to reflect India–Thailand dual‑regional focus</td>
@@ -604,7 +603,7 @@
           <td>280,000</td>
         </tr>
         <tr>
-          <td>ECB / ICB & Other High-Fee International Schools</td>
+          <td>ECB / ICB &amp; Other High-Fee International Schools</td>
           <td>Bangkok Network</td>
           <td>10</td>
           <td>30,000</td>
@@ -621,8 +620,7 @@
     </table>
   </div>
 
-  <!-- Chart.js scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js"></script>
   <script>
     const ctx = document.getElementById('workHoursChart');
     new Chart(ctx, {
@@ -633,17 +631,17 @@
           {
             label: 'Web / Blockchain / Portal / CRM',
             data: [70,63,56,56,66,36],
-            backgroundColor: '#00BCD4'
+            backgroundColor: '#0ea5e9'
           },
           {
             label: 'Research',
             data: [15,13.5,12,24,22,12],
-            backgroundColor: '#2E7D32'
+            backgroundColor: '#22c55e'
           },
           {
             label: 'Business Dev / Outreach',
             data: [15,13.5,12,8,33,18],
-            backgroundColor: '#D4AF37'
+            backgroundColor: '#f97316'
           }
         ]
       },
@@ -652,17 +650,25 @@
         plugins: {
           title: {
             display: true,
-            text: 'Tech Design Focus Dominates Work Hours (Jun–Nov 2025)'
+            text: 'Tech Design Focus Dominates Work Hours (Jun–Nov 2025)',
+            color: '#e5e7eb'
           },
           legend: {
-            position: 'top'
+            position: 'top',
+            labels: { color: '#e5e7eb' }
           }
         },
         scales: {
-          x: { stacked: true },
+          x: {
+            stacked: true,
+            ticks: { color: '#e5e7eb' },
+            grid: { color: '#1f2937' }
+          },
           y: {
             stacked: true,
-            title: { display: true, text: 'Total Hours' }
+            title: { display: true, text: 'Total Hours', color: '#e5e7eb' },
+            ticks: { color: '#e5e7eb' },
+            grid: { color: '#1f2937' }
           }
         }
       }
