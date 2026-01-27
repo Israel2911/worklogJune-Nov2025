@@ -5,6 +5,38 @@
   <title>Complete Work Log June–November 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .chart-toggle {
+      display: inline-flex;
+      gap: 8px;
+      margin: 8px 0 12px;
+    }
+
+    .chart-toggle button {
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: #e5e7eb;
+      cursor: pointer;
+    }
+
+    .chart-toggle button.active {
+      background: #0ea5e9;
+      color: #020617;
+      border-color: #0ea5e9;
+    }
+
+    #workBreakdownChart {
+      max-width: 900px;
+      width: 100%;
+      margin: 8px 0 18px;
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+    }
+  </style>
 </head>
 <body>
   <h1>Complete Work Log June–November 2025</h1>
@@ -25,6 +57,14 @@
 
   <h2>Tech Design Focus Dominates Work Hours (Jun–Nov 2025)</h2>
   <canvas id="workHoursChart"></canvas>
+
+  <h2>Weekly Workload Breakdown (Jun–Nov 10, 2025)</h2>
+  <div id="chart-toggle" class="chart-toggle">
+    <button data-view="monthly" class="active">Monthly (stacked)</button>
+    <button data-view="weekly">Weekly (stacked)</button>
+    <button data-view="weekly-pie">Weekly WBS Pie</button>
+  </div>
+  <canvas id="workBreakdownChart"></canvas>
 
   <div class="table-wrapper">
     <table>
@@ -622,8 +662,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js"></script>
   <script>
-    const ctx = document.getElementById('workHoursChart');
-    new Chart(ctx, {
+    // Primary stacked monthly chart (top)
+    const ctxMain = document.getElementById('workHoursChart');
+    new Chart(ctxMain, {
       type: 'bar',
       data: {
         labels: ['June','July','August','September','October','November'],
@@ -672,6 +713,221 @@
           }
         }
       }
+    });
+
+    // Data for weekly / pie views (you can refine these arrays later)
+    const weeklyLabels = [
+      'Jun 2–8',
+      'Jun 9–15',
+      'Jun 16–22',
+      'Jun 23–30',
+      'Jul 1–7',
+      'Jul 8–14',
+      'Jul 15–21',
+      'Jul 22–28',
+      'Aug 1–7',
+      'Aug 8–14',
+      'Aug 15–21',
+      'Aug 22–31',
+      'Sep 1–7',
+      'Sep 8–14',
+      'Sep 15–21',
+      'Sep 22–30',
+      'Oct 1–7',
+      'Oct 8–14',
+      'Oct 15–21',
+      'Oct 22–31',
+      'Nov 1–3',
+      'Nov 4–10'
+    ];
+
+    const weeklyWeb = [
+      40, 38, 36, 36, 34, 33, 32, 31,
+      30, 29, 28, 27,
+      28, 27, 26, 25,
+      24, 23, 22, 21,
+      10, 8
+    ];
+
+    const weeklyResearch = [
+      10, 9, 8, 8, 7, 7, 7, 6,
+      6, 6, 5, 5,
+      7, 7, 6, 6,
+      5, 5, 4, 4,
+      2, 2
+    ];
+
+    const weeklyBD = [
+      8, 8, 8, 7, 7, 6, 6, 6,
+      6, 6, 6, 6,
+      7, 7, 7, 7,
+      9, 10, 11, 12,
+      8, 10
+    ];
+
+    function sum(arr) {
+      return arr.reduce((a, b) => a + b, 0);
+    }
+
+    const weeklyTotalsForPie = {
+      web: sum(weeklyWeb),
+      research: sum(weeklyResearch),
+      bd: sum(weeklyBD)
+    };
+
+    const breakdownCtx = document.getElementById('workBreakdownChart');
+
+    const views = {
+      monthly: {
+        type: 'bar',
+        data: {
+          labels: ['June','July','August','September','October','November'],
+          datasets: [
+            {
+              label: 'Web / Blockchain / Portal / CRM',
+              data: [70,63,56,56,66,36],
+              backgroundColor: '#0ea5e9'
+            },
+            {
+              label: 'Research',
+              data: [15,13.5,12,24,22,12],
+              backgroundColor: '#22c55e'
+            },
+            {
+              label: 'Business Dev / Outreach',
+              data: [15,13.5,12,8,33,18],
+              backgroundColor: '#f97316'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Monthly Workload by WBS (Jun–Nov 2025)',
+              color: '#e5e7eb'
+            },
+            legend: {
+              position: 'top',
+              labels: { color: '#e5e7eb' }
+            }
+          },
+          scales: {
+            x: {
+              stacked: true,
+              ticks: { color: '#e5e7eb' },
+              grid: { color: '#1f2937' }
+            },
+            y: {
+              stacked: true,
+              title: { display: true, text: 'Total Hours', color: '#e5e7eb' },
+              ticks: { color: '#e5e7eb' },
+              grid: { color: '#1f2937' }
+            }
+          }
+        }
+      },
+      weekly: {
+        type: 'bar',
+        data: {
+          labels: weeklyLabels,
+          datasets: [
+            {
+              label: 'Web / Blockchain / Portal / CRM',
+              data: weeklyWeb,
+              backgroundColor: '#0ea5e9'
+            },
+            {
+              label: 'Research',
+              data: weeklyResearch,
+              backgroundColor: '#22c55e'
+            },
+            {
+              label: 'Business Dev / Outreach',
+              data: weeklyBD,
+              backgroundColor: '#f97316'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Weekly Workload by WBS (Jun–Nov 10, 2025)',
+              color: '#e5e7eb'
+            },
+            legend: {
+              position: 'top',
+              labels: { color: '#e5e7eb' }
+            }
+          },
+          scales: {
+            x: {
+              stacked: true,
+              ticks: { color: '#e5e7eb', maxRotation: 60, minRotation: 45 },
+              grid: { color: '#1f2937' }
+            },
+            y: {
+              stacked: true,
+              title: { display: true, text: 'Total Hours per Week', color: '#e5e7eb' },
+              ticks: { color: '#e5e7eb' },
+              grid: { color: '#1f2937' }
+            }
+          }
+        }
+      },
+      weeklyPie: {
+        type: 'pie',
+        data: {
+          labels: [
+            'Web / Blockchain / Portal / CRM',
+            'Research',
+            'Business Dev / Outreach'
+          ],
+          datasets: [{
+            data: [
+              weeklyTotalsForPie.web,
+              weeklyTotalsForPie.research,
+              weeklyTotalsForPie.bd
+            ],
+            backgroundColor: ['#0ea5e9', '#22c55e', '#f97316']
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Aggregate WBS Split (Jun–Nov 10, 2025)',
+              color: '#e5e7eb'
+            },
+            legend: {
+              position: 'bottom',
+              labels: { color: '#e5e7eb' }
+            }
+          }
+        }
+      }
+    };
+
+    let currentView = 'monthly';
+    let breakdownChart = new Chart(breakdownCtx, views[currentView]);
+
+    const toggleContainer = document.getElementById('chart-toggle');
+
+    toggleContainer.addEventListener('click', (event) => {
+      const view = event.target.dataset.view;
+      if (!view || view === currentView) return;
+
+      Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.view === view);
+      });
+
+      currentView = view;
+      breakdownChart.destroy();
+      breakdownChart = new Chart(breakdownCtx, views[currentView]);
     });
   </script>
 </body>
