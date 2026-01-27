@@ -743,9 +743,11 @@
     bd: sum(weeklyBD)
   };
 
+  const totalDays = 162;
+  const totalWeeks = weeklyLabels.length;
+  const totalMonths = 6;
+
   // ---------- PIE MODES (DAILY/WEEKLY AGGREGATES) ----------
-  // Weekly aggregate: direct sums from weekly arrays.
-  // Daily aggregate: example variant so the slices visibly change.
   const pieModes = {
     'weekly-aggregate': {
       label: 'Weekly WBS Pie · Aggregate Split (Jun–Nov 10, 2025)',
@@ -757,6 +759,7 @@
     },
     'daily-aggregate': {
       label: 'Daily WBS Pie · Aggregate Split (Jun–Nov 10, 2025)',
+      // placeholder variation so slices change; swap for real daily totals later
       data: [
         weeklyTotalsForPie.web * 0.9,
         weeklyTotalsForPie.research * 1.1,
@@ -899,6 +902,22 @@
           legend: {
             position: 'bottom',
             labels: { color: '#e5e7eb' }
+          },
+          tooltip: {
+            callbacks: {
+              label: function (context) {
+                const label = context.label || '';
+                const value = context.parsed || 0;
+                const dataset = context.dataset;
+                const total = dataset.data.reduce((a, b) => a + b, 0);
+                const pct = total ? (value / total * 100).toFixed(1) : 0;
+
+                return [
+                  `${label}: ${value.toFixed(1)} hrs (${pct}%)`,
+                  `Covers: ${totalMonths} months, ${totalWeeks} weeks, ${totalDays} days`
+                ];
+              }
+            }
           }
         }
       }
@@ -957,11 +976,12 @@
       if (currentView === 'weekly-pie') {
         breakdownChart.data.datasets[0].data = pieModes[currentPieMode].data;
         breakdownChart.options.plugins.title.text = pieModes[currentPieMode].label;
-        breakdownChart.update(); // standard Chart.js update pattern[web:48]
+        breakdownChart.update(); // Chart.js update pattern[web:48]
       }
     });
   }
 </script>
+
 
 
 
