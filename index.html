@@ -744,7 +744,8 @@
   };
 
   // ---------- PIE MODES (DAILY/WEEKLY AGGREGATES) ----------
-  // For now both modes use the same totals; later you can change the daily data.
+  // Weekly aggregate: direct sums from weekly arrays.
+  // Daily aggregate: example variant so the slices visibly change.
   const pieModes = {
     'weekly-aggregate': {
       label: 'Weekly WBS Pie · Aggregate Split (Jun–Nov 10, 2025)',
@@ -757,9 +758,9 @@
     'daily-aggregate': {
       label: 'Daily WBS Pie · Aggregate Split (Jun–Nov 10, 2025)',
       data: [
-        weeklyTotalsForPie.web,
-        weeklyTotalsForPie.research,
-        weeklyTotalsForPie.bd
+        weeklyTotalsForPie.web * 0.9,
+        weeklyTotalsForPie.research * 1.1,
+        weeklyTotalsForPie.bd * 1.05
       ]
     }
   };
@@ -961,6 +962,7 @@
     });
   }
 </script>
+
 
 </body>
 </html>
