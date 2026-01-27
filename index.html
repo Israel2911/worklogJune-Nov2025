@@ -874,23 +874,29 @@
   };
 
   // ----- TOGGLE LOGIC -----
-  let currentView = 'monthly';
-  let breakdownChart = new Chart(breakdownCtx, views[currentView]);
+let currentView = 'monthly';
+let breakdownChart = new Chart(breakdownCtx, views[currentView]);
 
-  const toggleContainer = document.getElementById('chart-toggle');
+const toggleContainer = document.getElementById('chart-toggle');
 
-  toggleContainer.addEventListener('click', (event) => {
-    const view = event.target.dataset.view;
-    if (!view || view === currentView) return;
+toggleContainer.addEventListener('click', (event) => {
+  const view = event.target.dataset.view;
+  if (!view || view === currentView) return;
 
-    Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.view === view);
-    });
-
-    currentView = view;
-    breakdownChart.destroy();
-    breakdownChart = new Chart(breakdownCtx, views[currentView]);
+  // Update active button styling
+  Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === view);
   });
+
+  currentView = view;
+
+  // Map data-view values to keys in the views object
+  const viewKey = (view === 'weekly-pie') ? 'weeklyPie' : view;
+
+  breakdownChart.destroy();
+  breakdownChart = new Chart(breakdownCtx, views[viewKey]);
+});
+
 </script>
 
 </body>
