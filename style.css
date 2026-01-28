@@ -91,6 +91,19 @@ canvas {
   border: 1px solid #1f2937;
 }
 
+/* NEW: Horizontal scroll container for daily chart */
+.chart-scroll-x {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 8px 0 18px;
+}
+
+.chart-scroll-x canvas {
+  min-width: 1800px; /* Force chart wider than viewport */
+}
+
+
 /* Toggle buttons above second chart */
 .chart-toggle {
   display: inline-flex;
