@@ -76,14 +76,15 @@ h2 {
 }
 
 #workBreakdownChart {
-  max-width: 900px;
+  max-width: 100%;    /* Changed from 900px - let it use full width */
   width: 100%;
-  height: 360px;
+  height: 400px;      /* Increased from 360px for better visibility */
   margin: 8px 0 18px;
   background: #020617;
   border-radius: 10px;
   border: 1px solid #1f2937;
 }
+
 
 canvas {
   background: #020617;
