@@ -3203,6 +3203,50 @@ if (revenueCtx) {
   });
 }
     </script>
+
+<script>
+// Revenue Chart
+const revenueCtx = document.getElementById('revenueChart');
+if (revenueCtx) {
+  new Chart(revenueCtx, {
+    type: 'bar',
+    data: {
+      labels: ['St. Andrews (India/UK)', 'ISB Bangkok', 'Anglo Singapore', 'ECB/ICB Network'],
+      datasets: [{
+        label: 'Illustrative Annual Revenue (CAD)',
+        data: [350000, 280000, 280000, 300000],
+        backgroundColor: '#e5e7eb',
+        borderColor: '#9ca3af',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return '$' + (value/1000).toFixed(0) + 'k';
+            }
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Annual Revenue Projection by Partnership (CAD)',
+          color: '#e5e7eb'
+        }
+      }
+    }
+  });
+}
+</script>
 </body>
 </html>
 
