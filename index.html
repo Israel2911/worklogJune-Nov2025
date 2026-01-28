@@ -26,17 +26,16 @@
   <h2>Tech Design Focus Dominates Work Hours (Jun–Nov 2025)</h2>
   <canvas id="workHoursChart"></canvas>
 
-  <h2>Workload Breakdown (Jun–Nov 10, 2025)</h2>
-  <div id="chart-toggle" class="chart-toggle">
-    <button data-view="monthly" class="active">Monthly (stacked)</button>
-    <button data-view="weekly">Weekly (stacked)</button>
-    <button data-view="daily">Daily (stacked)</button>
-  </div>
-<div class="chart-scroll-x">
-  </canvas>="workBreakdownChart"></canvas>
+<h2>Workload Breakdown (Jun–Nov 10, 2025)</h2><br>
+<div id="chart-toggle" class="chart-toggle"><br>
+  <button data-view="monthly" class="active">Monthly (stacked)</button><br>
+  <button data-view="weekly">Weekly (stacked)</button><br>
+  <button data-view="daily">Daily (stacked)</button><br>
 </div>
-
+<div class="chart-scroll-x">
   <canvas id="workBreakdownChart"></canvas>
+</div><br>
+
 
   <h2>Daily Work Log (Click month headers to expand/collapse)</h2>
   <div class="table-wrapper">
@@ -2797,10 +2796,10 @@
   partnerships and enrolling a small cohort of high-fee students from each institution.
 </p>
 
-<!-- NEW: Revenue visualization chart -->
-  <div style="height: 300px; margin: 20px 0;">
-<canvas> id="revenueChart"></canvas>
-    </div>
+<div class="chart-scroll-x">
+  <canvas id="revenueChart"></canvas>
+</div><br>
+
 
 <div class="table-wrapper revenue-table">
   <table>
@@ -2855,43 +2854,122 @@
     </table>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js"></script>
-  <script>
-    function deleteRow(button) {
-      const row = button.closest('tr');
-      if (!row) return;
-      row.remove();
-      recomputeDailyFromTable();
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js"></script>
+<script>
+  function deleteRow(button) {
+    const row = button.closest('tr');
+    if (!row) return;
+    row.remove();
+    recomputeDailyFromTable();
+  }
+
+  function addTaskRow(monthKey) {
+    const tbody = document.getElementById('work-log-body');
+    const allRows = Array.from(tbody.querySelectorAll('tr'));
+    const insertBeforeRow = allRows.find(
+      r => r.classList.contains('add-task-row') && r.dataset.month === monthKey
+    );
+    if (!insertBeforeRow) return;
+
+    const newDate = prompt('Enter date for new task (YYYY-MM-DD):', monthKey + '-15');
+    if (!newDate) return;
+
+    const tr = document.createElement('tr');
+    tr.className = 'task-row';
+    tr.dataset.date = newDate;
+    tr.dataset.month = monthKey;
+    tr.innerHTML = `
+      <td>${newDate}</td>
+      <td data-wbs="web"><input type="number" step="0.25" min="0" value="0" /></td>
+      <td data-wbs="research"><input type="number" step="0.25" min="0" value="0" /></td>
+      <td data-wbs="bd"><input type="number" step="0.25" min="0" value="0" /></td>
+      <td data-outcome="true"><textarea>New task.</textarea></td>
+      <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
+    `;
+    tbody.insertBefore(tr, insertBeforeRow);
+    attachInputListenerToRow(tr);
+    recomputeDailyFromTable();
+  }
+
+  const ctxMain = document.getElementById('workHoursChart');
+  new Chart(ctxMain, {
+    type: 'bar',
+    data: {
+      labels: ['June','July','August','September','October','November'],
+      datasets: [
+        { label: 'Web / Blockchain / Portal / CRM', data: [70,63,56,56,66,36], backgroundColor: '#0ea5e9' },
+        { label: 'Research', data: [15,13.5,12,24,22,12], backgroundColor: '#22c55e' },
+        { label: 'Business Dev / Outreach', data: [15,13.5,12,8,33,18], backgroundColor: '#f97316' }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: { display: true, text: 'Tech Design Focus Dominates Work Hours (Jun–Nov 2025)', color: '#e5e7eb' },
+        legend: { position: 'top', labels: { color: '#e5e7eb' } }
+      },
+      scales: {
+        x: { stacked: true, ticks: { color: '#e5e7eb' }, grid: { color: '#1f2937' } },
+        y: {
+          stacked: true,
+          title: { display: true, text: 'Total Hours', color: '#e5e7eb' },
+          ticks: { color: '#e5e7eb' },
+          grid: { color: '#1f2937' }
+        }
+      }
     }
+  });
 
-    function addTaskRow(monthKey) {
-      const tbody = document.getElementById('work-log-body');
-      const allRows = Array.from(tbody.querySelectorAll('tr'));
-      const insertBeforeRow = allRows.find(r => r.classList.contains('add-task-row') && r.dataset.month === monthKey);
-      if (!insertBeforeRow) return;
+  const weeklyLabels = [
+    'Jun 2–8','Jun 9–15','Jun 16–22','Jun 23–30',
+    'Jul 1–7','Jul 8–14','Jul 15–21','Jul 22–28',
+    'Aug 1–7','Aug 8–14','Aug 15–21','Aug 22–31',
+    'Sep 1–7','Sep 8–14','Sep 15–21','Sep 22–30',
+    'Oct 1–7','Oct 8–14','Oct 15–21','Oct 22–31',
+    'Nov 1–3','Nov 4–10'
+  ];
+  const weeklyWeb =  [40,38,36,36,34,33,32,31,30,29,28,27,28,27,26,25,24,23,22,21,10,8];
+  const weeklyResearch = [10,9,8,8,7,7,7,6,6,6,5,5,7,7,6,6,5,5,4,4,2,2];
+  const weeklyBD = [8,8,8,7,7,6,6,6,6,6,6,6,7,7,7,7,9,10,11,12,8,10];
 
-      const newDate = prompt('Enter date for new task (YYYY-MM-DD):', monthKey + '-15');
-      if (!newDate) return;
+  function readWorkLogFromTable() {
+    const rows = document.querySelectorAll('#work-log-body tr.task-row');
+    const log = [];
+    rows.forEach(row => {
+      const date = row.dataset.date;
+      if (!date) return;
+      row.querySelectorAll('td[data-wbs]').forEach(cell => {
+        const wbs = cell.dataset.wbs;
+        const input = cell.querySelector('input');
+        const hours = parseFloat(input.value) || 0;
+        if (hours > 0) log.push({ date, wbs, hours });
+      });
+    });
+    return log;
+  }
 
-      const tr = document.createElement('tr');
-      tr.className = 'task-row';
-      tr.dataset.date = newDate;
-      tr.dataset.month = monthKey;
-      tr.innerHTML = `
-        <td>${newDate}</td>
-        <td data-wbs="web"><input type="number" step="0.25" min="0" value="0" /></td>
-        <td data-wbs="research"><input type="number" step="0.25" min="0" value="0" /></td>
-        <td data-wbs="bd"><input type="number" step="0.25" min="0" value="0" /></td>
-        <td data-outcome="true"><textarea>New task.</textarea></td>
-        <td><button class="btn-action btn-delete" onclick="deleteRow(this)">Delete</button></td>
-      `;
-      tbody.insertBefore(tr, insertBeforeRow);
-      attachInputListenerToRow(tr);
-      recomputeDailyFromTable();
-    }
+  function buildDailySeries(workLog) {
+    const byDate = {};
+    workLog.forEach(({ date, wbs, hours }) => {
+      if (!byDate[date]) byDate[date] = { web: 0, research: 0, bd: 0 };
+      byDate[date][wbs] += hours;
+    });
+    const dates = Object.keys(byDate).sort();
+    const labels = dates.map(d => {
+      const [y,m,day] = d.split('-');
+      return m + '/' + day;
+    });
+    const dailyWeb = dates.map(d => byDate[d].web);
+    const dailyResearch = dates.map(d => byDate[d].research);
+    const dailyBD = dates.map(d => byDate[d].bd);
+    return { labels, dailyWeb, dailyResearch, dailyBD };
+  }
 
-    const ctxMain = document.getElementById('workHoursChart');
-    new Chart(ctxMain, {
+  const breakdownCtx = document.getElementById('workBreakdownChart');
+  let dailySeries = buildDailySeries(readWorkLogFromTable());
+
+  const views = {
+    monthly: {
       type: 'bar',
       data: {
         labels: ['June','July','August','September','October','November'],
@@ -2904,7 +2982,7 @@
       options: {
         responsive: true,
         plugins: {
-          title: { display: true, text: 'Tech Design Focus Dominates Work Hours (Jun–Nov 2025)', color: '#e5e7eb' },
+          title: { display: true, text: 'Monthly Workload by WBS (Jun–Nov 2025)', color: '#e5e7eb' },
           legend: { position: 'top', labels: { color: '#e5e7eb' } }
         },
         scales: {
@@ -2917,336 +2995,183 @@
           }
         }
       }
-    });
-
-    const weeklyLabels = [
-      'Jun 2–8','Jun 9–15','Jun 16–22','Jun 23–30',
-      'Jul 1–7','Jul 8–14','Jul 15–21','Jul 22–28',
-      'Aug 1–7','Aug 8–14','Aug 15–21','Aug 22–31',
-      'Sep 1–7','Sep 8–14','Sep 15–21','Sep 22–30',
-      'Oct 1–7','Oct 8–14','Oct 15–21','Oct 22–31',
-      'Nov 1–3','Nov 4–10'
-    ];
-    const weeklyWeb =  [40,38,36,36,34,33,32,31,30,29,28,27,28,27,26,25,24,23,22,21,10,8];
-    const weeklyResearch = [10,9,8,8,7,7,7,6,6,6,5,5,7,7,6,6,5,5,4,4,2,2];
-    const weeklyBD = [8,8,8,7,7,6,6,6,6,6,6,6,7,7,7,7,9,10,11,12,8,10];
-
-    function readWorkLogFromTable() {
-      const rows = document.querySelectorAll('#work-log-body tr.task-row');
-      const log = [];
-      rows.forEach(row => {
-        const date = row.dataset.date;
-        if (!date) return;
-        row.querySelectorAll('td[data-wbs]').forEach(cell => {
-          const wbs = cell.dataset.wbs;
-          const input = cell.querySelector('input');
-          const hours = parseFloat(input.value) || 0;
-          if (hours > 0) log.push({ date, wbs, hours });
-        });
-      });
-      return log;
-    }
-
-    function buildDailySeries(workLog) {
-      const byDate = {};
-      workLog.forEach(({ date, wbs, hours }) => {
-        if (!byDate[date]) byDate[date] = { web: 0, research: 0, bd: 0 };
-        byDate[date][wbs] += hours;
-      });
-      const dates = Object.keys(byDate).sort();
-      const labels = dates.map(d => {
-        const [y,m,day] = d.split('-');
-        return m + '/' + day;
-      });
-      const dailyWeb = dates.map(d => byDate[d].web);
-      const dailyResearch = dates.map(d => byDate[d].research);
-      const dailyBD = dates.map(d => byDate[d].bd);
-      return { labels, dailyWeb, dailyResearch, dailyBD };
-    }
-
-    const breakdownCtx = document.getElementById('workBreakdownChart');
-    let dailySeries = buildDailySeries(readWorkLogFromTable());
-
-    const views = {
-      monthly: {
-        type: 'bar',
-        data: {
-          labels: ['June','July','August','September','October','November'],
-          datasets: [
-            { label: 'Web / Blockchain / Portal / CRM', data: [70,63,56,56,66,36], backgroundColor: '#0ea5e9' },
-            { label: 'Research', data: [15,13.5,12,24,22,12], backgroundColor: '#22c55e' },
-            { label: 'Business Dev / Outreach', data: [15,13.5,12,8,33,18], backgroundColor: '#f97316' }
-          ]
+    },
+    weekly: {
+      type: 'bar',
+      data: {
+        labels: weeklyLabels,
+        datasets: [
+          { label: 'Web / Blockchain / Portal / CRM', data: weeklyWeb, backgroundColor: '#0ea5e9' },
+          { label: 'Research', data: weeklyResearch, backgroundColor: '#22c55e' },
+          { label: 'Business Dev / Outreach', data: weeklyBD, backgroundColor: '#f97316' }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: 'Weekly Workload by WBS (Jun–Nov 10, 2025)', color: '#e5e7eb' },
+          legend: { position: 'top', labels: { color: '#e5e7eb' } }
         },
-        options: {
-          responsive: true,
-          plugins: {
-            title: { display: true, text: 'Monthly Workload by WBS (Jun–Nov 2025)', color: '#e5e7eb' },
-            legend: { position: 'top', labels: { color: '#e5e7eb' } }
+        scales: {
+          x: {
+            stacked: true,
+            ticks: { color: '#e5e7eb', maxRotation: 60, minRotation: 45 },
+            grid: { color: '#1f2937' }
           },
-          scales: {
-            x: { stacked: true, ticks: { color: '#e5e7eb' }, grid: { color: '#1f2937' } },
-            y: {
-              stacked: true,
-              title: { display: true, text: 'Total Hours', color: '#e5e7eb' },
-              ticks: { color: '#e5e7eb' },
-              grid: { color: '#1f2937' }
-            }
+          y: {
+            stacked: true,
+            title: { display: true, text: 'Total Hours per Week', color: '#e5e7eb' },
+            ticks: { color: '#e5e7eb' },
+            grid: { color: '#1f2937' }
           }
         }
-      },
-      weekly: {
-        type: 'bar',
-        data: {
-          labels: weeklyLabels,
-          datasets: [
-            { label: 'Web / Blockchain / Portal / CRM', data: weeklyWeb, backgroundColor: '#0ea5e9' },
-            { label: 'Research', data: weeklyResearch, backgroundColor: '#22c55e' },
-            { label: 'Business Dev / Outreach', data: weeklyBD, backgroundColor: '#f97316' }
-          ]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            title: { display: true, text: 'Weekly Workload by WBS (Jun–Nov 10, 2025)', color: '#e5e7eb' },
-            legend: { position: 'top', labels: { color: '#e5e7eb' } }
-          },
-          scales: {
-            x: {
-              stacked: true,
-              ticks: { color: '#e5e7eb', maxRotation: 60, minRotation: 45 },
-              grid: { color: '#1f2937' }
-            },
-            y: {
-              stacked: true,
-              title: { display: true, text: 'Total Hours per Week', color: '#e5e7eb' },
-              ticks: { color: '#e5e7eb' },
-              grid: { color: '#1f2937' }
-            }
-          }
-        }
-      },
-daily: {
-  type: 'bar',
-  data: {
-    labels: dailySeries.labels,
-    datasets: [
-      { label: 'Web / Blockchain / Portal / CRM', data: dailySeries.dailyWeb, backgroundColor: '#0ea5e9' },
-      { label: 'Research', data: dailySeries.dailyResearch, backgroundColor: '#22c55e' },
-      { label: 'Business Dev / Outreach', data: dailySeries.dailyBD, backgroundColor: '#f97316' }
-    ]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      title: { display: true, text: 'Daily Workload by WBS (Jun–Nov 10, 2025)', color: '#e5e7eb' },
-      legend: { position: 'top', labels: { color: '#e5e7eb' } }
-    },
-scales: {
-  x: {
-    stacked: true,
-    ticks: {
-      color: '#e5e7eb',
-      autoSkip: false,   // NEW: show every date
-      source: 'data',    // NEW: one label per bar
-      maxRotation: 60,
-      minRotation: 60
-    },
-    grid: { color: '#1f2937' }
-  },
-
-      y: {
-        stacked: true,
-        title: { display: true, text: 'Total Hours per Day', color: '#e5e7eb' },
-        ticks: { color: '#e5e7eb' },
-        grid: { color: '#1f2937' }
       }
+    },
+    daily: {
+      type: 'bar',
+      data: {
+        labels: dailySeries.labels,
+        datasets: [
+          { label: 'Web / Blockchain / Portal / CRM', data: dailySeries.dailyWeb, backgroundColor: '#0ea5e9' },
+          { label: 'Research', data: dailySeries.dailyResearch, backgroundColor: '#22c55e' },
+          { label: 'Business Dev / Outreach', data: dailySeries.dailyBD, backgroundColor: '#f97316' }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: true, text: 'Daily Workload by WBS (Jun–Nov 10, 2025)', color: '#e5e7eb' },
+          legend: { position: 'top', labels: { color: '#e5e7eb' } }
+        },
+        scales: {
+          x: {
+            stacked: true,
+            ticks: {
+              color: '#e5e7eb',
+              autoSkip: false,
+              source: 'data',
+              maxRotation: 60,
+              minRotation: 60
+            },
+            grid: { color: '#1f2937' }
+          },
+          y: {
+            stacked: true,
+            title: { display: true, text: 'Total Hours per Day', color: '#e5e7eb' },
+            ticks: { color: '#e5e7eb' },
+            grid: { color: '#1f2937' }
+          }
+        }
+      }
+    }
+  };
+
+  let currentView = 'monthly';
+  let breakdownChart = new Chart(breakdownCtx, views[currentView]);
+
+  const toggleContainer = document.getElementById('chart-toggle');
+  toggleContainer.addEventListener('click', (event) => {
+    const view = event.target.dataset.view;
+    if (!view || view === currentView) return;
+    Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === view);
+    });
+    currentView = view;
+    breakdownChart.destroy();
+    breakdownChart = new Chart(breakdownCtx, views[view]);
+  });
+
+  function recomputeDailyFromTable() {
+    const log = readWorkLogFromTable();
+    dailySeries = buildDailySeries(log);
+    views.daily.data.labels = dailySeries.labels;
+    views.daily.data.datasets[0].data = dailySeries.dailyWeb;
+    views.daily.data.datasets[1].data = dailySeries.dailyResearch;
+    views.daily.data.datasets[2].data = dailySeries.dailyBD;
+    if (currentView === 'daily') {
+      breakdownChart.data.labels = dailySeries.labels;
+      breakdownChart.data.datasets[0].data = dailySeries.dailyWeb;
+      breakdownChart.data.datasets[1].data = dailySeries.dailyResearch;
+      breakdownChart.data.datasets[2].data = dailySeries.dailyBD;
+      breakdownChart.update();
     }
   }
-}
 
-
-    };
-
-    let currentView = 'monthly';
-    let breakdownChart = new Chart(breakdownCtx, views[currentView]);
-
-    const toggleContainer = document.getElementById('chart-toggle');
-    toggleContainer.addEventListener('click', (event) => {
-      const view = event.target.dataset.view;
-      if (!view || view === currentView) return;
-      Array.from(toggleContainer.querySelectorAll('button')).forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.view === view);
-      });
-      currentView = view;
-      breakdownChart.destroy();
-      breakdownChart = new Chart(breakdownCtx, views[view]);
+  function attachInputListenerToRow(row) {
+    row.addEventListener('input', () => {
+      recomputeDailyFromTable();
     });
+  }
 
-    function recomputeDailyFromTable() {
-      const log = readWorkLogFromTable();
-      dailySeries = buildDailySeries(log);
-      views.daily.data.labels = dailySeries.labels;
-      views.daily.data.datasets[0].data = dailySeries.dailyWeb;
-      views.daily.data.datasets[1].data = dailySeries.dailyResearch;
-      views.daily.data.datasets[2].data = dailySeries.dailyBD;
-      if (currentView === 'daily') {
-        breakdownChart.data.labels = dailySeries.labels;
-        breakdownChart.data.datasets[0].data = dailySeries.dailyWeb;
-        breakdownChart.data.datasets[1].data = dailySeries.dailyResearch;
-        breakdownChart.data.datasets[2].data = dailySeries.dailyBD;
-        breakdownChart.update();
+  document.querySelectorAll('#work-log-body tr.task-row').forEach(row => {
+    attachInputListenerToRow(row);
+  });
+
+  const tableBody = document.getElementById('work-log-body');
+  tableBody.addEventListener('click', (e) => {
+    const headerRow = e.target.closest('tr.section-header');
+    if (!headerRow) return;
+    const monthKey = headerRow.dataset.month;
+    headerRow.classList.toggle('collapsed');
+    const rows = tableBody.querySelectorAll('tr.task-row, tr.add-task-row');
+    rows.forEach(row => {
+      if (row.dataset.month === monthKey) {
+        row.classList.toggle('hidden');
       }
-    }
-
-    function attachInputListenerToRow(row) {
-      row.addEventListener('input', () => {
-        recomputeDailyFromTable();
-      });
-    }
-
-    document.querySelectorAll('#work-log-body tr.task-row').forEach(row => {
-      attachInputListenerToRow(row);
     });
+  });
 
-    const tableBody = document.getElementById('work-log-body');
-    tableBody.addEventListener('click', (e) => {
-      const headerRow = e.target.closest('tr.section-header');
-      if (!headerRow) return;
-      const monthKey = headerRow.dataset.month;
-      headerRow.classList.toggle('collapsed');
-      const rows = tableBody.querySelectorAll('tr.task-row, tr.add-task-row');
-      rows.forEach(row => {
-        if (row.dataset.month === monthKey) {
-          row.classList.toggle('hidden');
-        }
-      });
-    });
-
-    // Revenue Chart
-const revenueCtx = document.getElementById('revenueChart');
-if (revenueCtx) {
-  new Chart(revenueCtx, {
-    type: 'bar',
-    data: {
-      labels: [
-        'St. Andrews Partnership',
-        'Int\'l School of Bangkok',
-        'Anglo Singapore School',
-        'ECB/ICB & Bangkok Network'
-      ],
-      datasets: [{
-        label: 'Projected Annual Revenue (CAD)',
-        data: [350000, 280000, 280000, 300000],
-        backgroundColor: [
-          '#6366f1',  // India - purple
-          '#0ea5e9',  // Bangkok - cyan
-          '#0ea5e9',  // Bangkok - cyan
-          '#0ea5e9'   // Bangkok - cyan
+  // Revenue Chart (keep ONLY one implementation here)
+  const revenueCtx = document.getElementById('revenueChart');
+  if (revenueCtx) {
+    new Chart(revenueCtx, {
+      type: 'bar',
+      data: {
+        labels: [
+          'St. Andrews Partnership',
+          "Int'l School of Bangkok",
+          'Anglo Singapore School',
+          'ECB/ICB & Bangkok Network'
         ],
-        borderColor: '#1f2937',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      indexAxis: 'y',  // Horizontal bars
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Partnership Revenue Potential ($1.21M Total from 36 Students)',
-          color: '#e5e7eb',
-          font: { size: 14, weight: '600' }
-        },
-        legend: {
-          display: false
-        },
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              const revenue = context.parsed.x;
-              const students = [10, 8, 8, 10][context.dataIndex];
-              return [
-                `Revenue: $${(revenue/1000).toFixed(0)}k CAD`,
-                `Students: ${students}/year`,
-                `Per student: $${(revenue/students/1000).toFixed(0)}k`
-              ];
-            }
-          }
-        }
+        datasets: [{
+          label: 'Projected Annual Revenue (CAD)',
+          data: [350000, 280000, 280000, 300000],
+          backgroundColor: ['#6366f1','#0ea5e9','#0ea5e9','#0ea5e9'],
+          borderColor: '#1f2937',
+          borderWidth: 1
+        }]
       },
-      scales: {
-        x: {
-          ticks: {
-            color: '#e5e7eb',
-            callback: function(value) {
-              return '$' + (value/1000).toFixed(0) + 'k';
-            }
-          },
-          grid: { color: '#1f2937' },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
           title: {
             display: true,
-            text: 'Annual Revenue (CAD)',
-            color: '#e5e7eb'
-          }
-        },
-        y: {
-          ticks: {
+            text: 'Partnership Revenue Potential ($1.21M Total from 36 Students)',
             color: '#e5e7eb',
-            font: { size: 11 }
+            font: { size: 14, weight: '600' }
           },
-          grid: { color: '#1f2937' }
-        }
-      }
-    }
-  });
-}
-    </script>
-
-<script>
-// Revenue Chart
-const revenueCtx = document.getElementById('revenueChart');
-if (revenueCtx) {
-  new Chart(revenueCtx, {
-    type: 'bar',
-    data: {
-      labels: ['St. Andrews (India/UK)', 'ISB Bangkok', 'Anglo Singapore', 'ECB/ICB Network'],
-      datasets: [{
-        label: 'Illustrative Annual Revenue (CAD)',
-        data: [350000, 280000, 280000, 300000],
-        backgroundColor: '#e5e7eb',
-        borderColor: '#9ca3af',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            callback: function(value) {
-              return '$' + (value/1000).toFixed(0) + 'k';
-            }
+          legend: { display: false }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: '#e5e7eb',
+              callback: v => '$' + (v / 1000).toFixed(0) + 'k'
+            },
+            grid: { color: '#1f2937' }
+          },
+          y: {
+            ticks: { color: '#e5e7eb', font: { size: 11 } },
+            grid: { color: '#1f2937' }
           }
         }
-      },
-      plugins: {
-        legend: {
-          display: false
-        },
-        title: {
-          display: true,
-          text: 'Annual Revenue Projection by Partnership (CAD)',
-          color: '#e5e7eb'
-        }
       }
-    }
-  });
-}
+    });
+  }
 </script>
+
 </body>
 </html>
 
