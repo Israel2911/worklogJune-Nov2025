@@ -3120,6 +3120,87 @@ scales: {
         }
       });
     });
+
+    // Revenue Chart
+const revenueCtx = document.getElementById('revenueChart');
+if (revenueCtx) {
+  new Chart(revenueCtx, {
+    type: 'bar',
+    data: {
+      labels: [
+        'St. Andrews Partnership',
+        'Int\'l School of Bangkok',
+        'Anglo Singapore School',
+        'ECB/ICB & Bangkok Network'
+      ],
+      datasets: [{
+        label: 'Projected Annual Revenue (CAD)',
+        data: [350000, 280000, 280000, 300000],
+        backgroundColor: [
+          '#6366f1',  // India - purple
+          '#0ea5e9',  // Bangkok - cyan
+          '#0ea5e9',  // Bangkok - cyan
+          '#0ea5e9'   // Bangkok - cyan
+        ],
+        borderColor: '#1f2937',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      indexAxis: 'y',  // Horizontal bars
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Partnership Revenue Potential ($1.21M Total from 36 Students)',
+          color: '#e5e7eb',
+          font: { size: 14, weight: '600' }
+        },
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const revenue = context.parsed.x;
+              const students = [10, 8, 8, 10][context.dataIndex];
+              return [
+                `Revenue: $${(revenue/1000).toFixed(0)}k CAD`,
+                `Students: ${students}/year`,
+                `Per student: $${(revenue/students/1000).toFixed(0)}k`
+              ];
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: '#e5e7eb',
+            callback: function(value) {
+              return '$' + (value/1000).toFixed(0) + 'k';
+            }
+          },
+          grid: { color: '#1f2937' },
+          title: {
+            display: true,
+            text: 'Annual Revenue (CAD)',
+            color: '#e5e7eb'
+          }
+        },
+        y: {
+          ticks: {
+            color: '#e5e7eb',
+            font: { size: 11 }
+          },
+          grid: { color: '#1f2937' }
+        }
+      }
+    }
+  });
+}
+
   </script>
 </body>
 </html>
