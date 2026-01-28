@@ -3035,18 +3035,19 @@ daily: {
       title: { display: true, text: 'Daily Workload by WBS (Jun–Nov 10, 2025)', color: '#e5e7eb' },
       legend: { position: 'top', labels: { color: '#e5e7eb' } }
     },
-    scales: {
-      x: {
-        stacked: true,
-        ticks: {
-          color: '#e5e7eb',
-          autoSkip: false,   // NEW: show every date label
-          source: 'data',    // NEW: one label per data point
-          maxRotation: 60,
-          minRotation: 60    // Changed from 45 to 60 for consistency
-        },
-        grid: { color: '#1f2937' }
-      },
+scales: {
+  x: {
+    stacked: true,
+    ticks: {
+      color: '#e5e7eb',
+      autoSkip: false,   // NEW: show every date
+      source: 'data',    // NEW: one label per bar
+      maxRotation: 60,
+      minRotation: 60
+    },
+    grid: { color: '#1f2937' }
+  },
+
       y: {
         stacked: true,
         title: { display: true, text: 'Total Hours per Day', color: '#e5e7eb' },
